@@ -17,8 +17,12 @@ class Base(DeclarativeBase):
 
 db = SQLAlchemy(model_class=Base)
 # Create the app
-app = Flask(__name__)
+app = Flask(__name__, 
+            template_folder='templates',
+            static_folder='static')
 app.secret_key = os.environ.get("SESSION_SECRET", "dev_secret_key")
+app.jinja_env.auto_reload = True
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 # Configure the PostgreSQL database
 database_url = os.environ.get("DATABASE_URL")
@@ -26,12 +30,15 @@ database_url = os.environ.get("DATABASE_URL")
 if database_url and database_url.startswith('postgres://'):
     database_url = database_url.replace('postgres://', 'postgresql://', 1)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = database_url or "sqlite:///pythonlearning.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = database_url or "sqlite:///instance/pythonlearning.db"
 app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
     "pool_recycle": 300,
     "pool_pre_ping": True,
 }
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+# Add debug output for the database URL
+logging.debug(f"Using database URL: {app.config['SQLALCHEMY_DATABASE_URI']}")
 
 # Initialize db with app
 db.init_app(app)
