@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Learning Platform - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        .hero {
+            background-color: #343a40;
+            color: white;
+            padding: 100px 0;
+            margin-bottom: 40px;
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #0d6efd;
+        }
+        .feature-card {
+            border: none;
+            transition: transform 0.3s;
+            height: 100%;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        .cta-section {
+            background-color: #e9ecef;
+            padding: 80px 0;
+            margin: 60px 0;
+        }
+        .topic-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            height: 100%;
+        }
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .code-block {
+            position: relative;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+        }
+        .code-header {
+            display: flex;
+            justify-content: flex-end;
+            padding: 0.5rem 1rem;
+            background-color: #212529;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+            border-bottom: 1px solid #343a40;
+        }
+        .code-content {
+            padding: 1rem;
+            background-color: #212529;
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
+            overflow-x: auto;
+        }
+        .code-content pre {
+            margin: 0;
+            color: #f8f9fa;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <i class="fab fa-python me-2 fs-3 text-info"></i>
+                <span>Python Learning Platform</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="home.html">
+                            <i class="fas fa-home me-1"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#topics">
+                            <i class="fas fa-book me-1"></i> Topics
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">
+                            <i class="fas fa-list-check me-1"></i> Features
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/bhawanigit/PythonCoders">
+                            <i class="fab fa-github me-1"></i> GitHub
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">Learn Python Programming with Bhawani</h1>
+                    <p class="lead mb-4">Master the fundamentals of Python programming with our interactive lessons and hands-on exercises designed for beginners.</p>
+                    
+                    <div class="d-grid gap-2 d-md-flex mb-4">
+                        <a href="#topics" class="btn btn-primary me-md-2">
+                            <i class="fas fa-book-open me-2"></i> Explore Topics
+                        </a>
+                        <a href="https://github.com/bhawanigit/PythonCoders" class="btn btn-outline-light">
+                            <i class="fab fa-github me-2"></i> View Code
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card bg-dark text-light shadow-lg">
+                        <div class="card-body p-4">
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <button class="btn btn-sm btn-outline-light" onclick="copyCode(this)">
+                                        <i class="far fa-copy me-1"></i> Copy
+                                    </button>
+                                </div>
+                                <div class="code-content">
+<pre>
+# Your first Python program
+print("Hello, World!")
+
+# Variables and data types
+name = "Python Learner"
+age = 2023 - 1991  # Python was created in 1991
+is_fun = True
+
+# A simple greeting function
+def greet(user_name):
+    return f"Welcome to Python, {user_name}!"
+
+# Call the function
+message = greet(name)
+print(message)
+</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container py-5" id="topics">
+        <h2 class="text-center mb-5">Learn Python Step-by-Step</h2>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card topic-card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Python Syntax</h5>
+                        <p class="card-text">Learn the basic syntax of Python programming language.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Indentation</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Comments</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Variables</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Print Function</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0">
+                        <a href="#" class="btn btn-primary d-block">Start Learning</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card topic-card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Data Types</h5>
+                        <p class="card-text">Explore Python's built-in data types like strings, numbers, lists, and dictionaries.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Numbers & Strings</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Lists & Tuples</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Dictionaries</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Type Conversion</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0">
+                        <a href="#" class="btn btn-primary d-block">Start Learning</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card topic-card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Loops</h5>
+                        <p class="card-text">Master the art of repetition with for and while loops.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check-circle text-success me-2"></i> For Loops</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> While Loops</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Loop Control</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Comprehensions</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0">
+                        <a href="#" class="btn btn-primary d-block">Start Learning</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card topic-card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Functions</h5>
+                        <p class="card-text">Learn how to create reusable blocks of code with functions.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Defining Functions</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Parameters & Arguments</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Return Values</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Lambda Functions</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0">
+                        <a href="#" class="btn btn-primary d-block">Start Learning</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-light py-5" id="features">
+        <div class="container">
+            <h2 class="text-center mb-5">Why Learn With Us?</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card feature-card shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon">
+                                <i class="fas fa-code text-primary"></i>
+                            </div>
+                            <h4 class="card-title">Interactive Code Editor</h4>
+                            <p class="card-text">Practice Python directly in your browser with our built-in code editor. Get instant feedback and see your code in action.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon">
+                                <i class="fas fa-tasks text-primary"></i>
+                            </div>
+                            <h4 class="card-title">Progress Tracking</h4>
+                            <p class="card-text">Track your learning journey with our progress system. Mark lessons as completed and see your progress over time.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon">
+                                <i class="fas fa-puzzle-piece text-primary"></i>
+                            </div>
+                            <h4 class="card-title">Practice Exercises</h4>
+                            <p class="card-text">Reinforce your learning with hands-on exercises and challenges that test your understanding of Python concepts.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container text-center">
+            <h2 class="mb-4">Ready to start learning Python?</h2>
+            <p class="lead mb-4">Explore our interactive lessons or check out the project on GitHub.</p>
+            <a href="#topics" class="btn btn-primary btn-lg me-3">Start Learning</a>
+            <a href="https://github.com/bhawanigit/PythonCoders" class="btn btn-dark btn-lg">View on GitHub</a>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Python Learning Platform</h5>
+                    <p class="text-muted">Learn Python programming from the basics to advanced concepts.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Resources</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="https://docs.python.org/3/" target="_blank" class="text-decoration-none text-muted">Python Documentation</a></li>
+                        <li><a href="https://www.python.org/" target="_blank" class="text-decoration-none text-muted">Python.org</a></li>
+                        <li><a href="https://pypi.org/" target="_blank" class="text-decoration-none text-muted">PyPI</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="home.html" class="text-decoration-none text-muted">Home</a></li>
+                        <li><a href="#topics" class="text-decoration-none text-muted">Topics</a></li>
+                        <li><a href="#features" class="text-decoration-none text-muted">Features</a></li>
+                        <li><a href="https://github.com/bhawanigit/PythonCoders" class="text-decoration-none text-muted">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-3">
+            <div class="text-center text-muted">
+                <small>&copy; 2025 Python Learning Platform. Created by Bhawani. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Function to copy code examples to clipboard
+        function copyCode(button) {
+            const codeBlock = button.parentElement.nextElementSibling;
+            const code = codeBlock.textContent;
+            
+            navigator.clipboard.writeText(code).then(() => {
+                // Change button text temporarily
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check me-1"></i> Copied!';
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error('Could not copy text: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
