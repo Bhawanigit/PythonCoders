@@ -1,0 +1,376 @@
+{
+  "title": "Python Functions",
+  "description": "Learn how to create reusable blocks of code with functions",
+  "prev_lesson": "loops",
+  "next_lesson": null,
+  "sections": [
+    {
+      "title": "Introduction to Functions",
+      "content": [
+        {
+          "type": "text",
+          "value": "Functions are one of the most important concepts in programming. They allow you to organize your code into reusable blocks, making it more modular, readable, and maintainable."
+        },
+        {
+          "type": "text",
+          "value": "A function is a block of organized, reusable code that is used to perform a single, related action. Functions provide better modularity for your application and a high degree of code reusability."
+        },
+        {
+          "type": "text",
+          "value": "In Python, there are two types of functions:"
+        },
+        {
+          "type": "text",
+          "value": "<ul><li><strong>Built-in functions</strong>: Functions that are built into Python, like <code>print()</code>, <code>len()</code>, and <code>range()</code>.</li><li><strong>User-defined functions</strong>: Functions that you create yourself to perform specific tasks.</li></ul>"
+        }
+      ]
+    },
+    {
+      "title": "Defining Functions",
+      "content": [
+        {
+          "type": "text",
+          "value": "In Python, you define a function using the <code>def</code> keyword, followed by the function name, parentheses, and a colon. The function body is indented below the definition line."
+        },
+        {
+          "type": "code",
+          "value": "# Basic function definition\ndef greet():\n    print(\"Hello, World!\")\n\n# Calling the function\ngreet()  # Output: Hello, World!"
+        },
+        {
+          "type": "text",
+          "value": "Let's break down the parts of a function definition:"
+        },
+        {
+          "type": "text",
+          "value": "<ul><li><strong>Function Name</strong>: A descriptive name following Python's naming conventions (lowercase with underscores).</li><li><strong>Parameters</strong>: Values that the function accepts (defined inside the parentheses).</li><li><strong>Function Body</strong>: The indented block of code that executes when the function is called.</li><li><strong>Return Statement</strong>: (Optional) Specifies the value the function returns.</li></ul>"
+        }
+      ]
+    },
+    {
+      "title": "Parameters and Arguments",
+      "content": [
+        {
+          "type": "text",
+          "value": "Functions can accept inputs, called parameters, which allow them to work with different values. When you call a function with specific values, those values are called arguments."
+        },
+        {
+          "type": "code",
+          "value": "# Function with parameters\ndef greet(name):\n    print(f\"Hello, {name}!\")\n\n# Call the function with an argument\ngreet(\"Alice\")  # Output: Hello, Alice!\ngreet(\"Bob\")    # Output: Hello, Bob!"
+        },
+        {
+          "type": "text",
+          "value": "You can define multiple parameters by separating them with commas:"
+        },
+        {
+          "type": "code",
+          "value": "# Function with multiple parameters\ndef describe_person(name, age, occupation):\n    print(f\"{name} is {age} years old and works as a {occupation}.\")\n\n# Call with multiple arguments\ndescribe_person(\"Alice\", 30, \"Software Engineer\")\n# Output: Alice is 30 years old and works as a Software Engineer."
+        },
+        {
+          "type": "note",
+          "value": "Parameters are the variables defined in the function declaration, while arguments are the values passed to the function when it's called."
+        }
+      ]
+    },
+    {
+      "title": "Return Values",
+      "content": [
+        {
+          "type": "text",
+          "value": "Functions can return values using the <code>return</code> statement. This allows functions to compute a result and pass it back to the caller."
+        },
+        {
+          "type": "code",
+          "value": "# Function with a return value\ndef add(a, b):\n    return a + b\n\n# Call the function and use the returned value\nresult = add(3, 5)\nprint(f\"The sum is {result}\")  # Output: The sum is 8\n\n# You can also use the returned value directly\nprint(f\"10 + 20 = {add(10, 20)}\")  # Output: 10 + 20 = 30"
+        },
+        {
+          "type": "text",
+          "value": "Functions can return multiple values by separating them with commas:"
+        },
+        {
+          "type": "code",
+          "value": "# Function returning multiple values\ndef calculate_statistics(numbers):\n    total = sum(numbers)\n    average = total / len(numbers)\n    maximum = max(numbers)\n    minimum = min(numbers)\n    return total, average, maximum, minimum\n\n# Call the function\nnumbers = [10, 15, 20, 25, 30]\ntotal, avg, maximum, minimum = calculate_statistics(numbers)\n\nprint(f\"Total: {total}\")\nprint(f\"Average: {avg}\")\nprint(f\"Maximum: {maximum}\")\nprint(f\"Minimum: {minimum}\")"
+        },
+        {
+          "type": "tip",
+          "value": "When a function returns multiple values, Python actually returns them as a tuple, which can be unpacked into multiple variables as shown in the example above."
+        }
+      ]
+    },
+    {
+      "title": "Default Parameters",
+      "content": [
+        {
+          "type": "text",
+          "value": "You can assign default values to parameters, which will be used if the function is called without specifying that argument."
+        },
+        {
+          "type": "code",
+          "value": "# Function with default parameters\ndef greet(name, greeting=\"Hello\"):\n    print(f\"{greeting}, {name}!\")\n\n# Call with all arguments\ngreet(\"Alice\", \"Hi\")  # Output: Hi, Alice!\n\n# Call with only the required argument\ngreet(\"Bob\")  # Output: Hello, Bob!"
+        },
+        {
+          "type": "text",
+          "value": "Default parameters must come after non-default parameters in the function definition."
+        },
+        {
+          "type": "code",
+          "value": "# Correct order: non-default parameters first, then default parameters\ndef function_with_defaults(a, b, c=10, d=20):\n    print(a, b, c, d)\n\n# This works fine\nfunction_with_defaults(1, 2)        # Output: 1 2 10 20\nfunction_with_defaults(1, 2, 3)      # Output: 1 2 3 20\nfunction_with_defaults(1, 2, 3, 4)   # Output: 1 2 3 4"
+        },
+        {
+          "type": "warning",
+          "value": "Be careful when using mutable objects like lists or dictionaries as default parameters. They are created only once when the function is defined, not each time the function is called."
+        }
+      ]
+    },
+    {
+      "title": "Keyword Arguments",
+      "content": [
+        {
+          "type": "text",
+          "value": "When calling a function, you can specify arguments by name (keyword), which allows you to skip default parameters or provide them in any order."
+        },
+        {
+          "type": "code",
+          "value": "# Function with multiple parameters\ndef describe_person(name, age, occupation=\"Unknown\", country=\"Unknown\"):\n    print(f\"{name} is {age} years old, works as a {occupation}, and is from {country}.\")\n\n# Call with positional arguments\ndescribe_person(\"Alice\", 30, \"Developer\", \"USA\")\n\n# Call with keyword arguments\ndescribe_person(name=\"Bob\", age=25, country=\"Canada\")\n\n# Mix positional and keyword arguments (positional must come first)\ndescribe_person(\"Charlie\", 35, country=\"Australia\")"
+        },
+        {
+          "type": "note",
+          "value": "When mixing positional and keyword arguments, all positional arguments must come before any keyword arguments."
+        }
+      ]
+    },
+    {
+      "title": "Variable-Length Arguments",
+      "content": [
+        {
+          "type": "text",
+          "value": "Sometimes you might want to create functions that can accept a varying number of arguments. Python provides two special parameters for this purpose:"
+        },
+        {
+          "type": "text",
+          "value": "<ul><li><strong>*args</strong>: Collects any number of positional arguments into a tuple</li><li><strong>**kwargs</strong>: Collects any number of keyword arguments into a dictionary</li></ul>"
+        },
+        {
+          "type": "code",
+          "value": "# Function with *args parameter\ndef sum_all(*numbers):\n    \"\"\"Sum all numbers passed to the function\"\"\"\n    return sum(numbers)\n\n# Call with different numbers of arguments\nprint(sum_all(1, 2))          # Output: 3\nprint(sum_all(1, 2, 3, 4, 5))  # Output: 15"
+        },
+        {
+          "type": "code",
+          "value": "# Function with **kwargs parameter\ndef print_info(**kwargs):\n    \"\"\"Print all keyword arguments\"\"\"\n    for key, value in kwargs.items():\n        print(f\"{key}: {value}\")\n\n# Call with keyword arguments\nprint_info(name=\"Alice\", age=30, occupation=\"Developer\")\n# Output:\n# name: Alice\n# age: 30\n# occupation: Developer"
+        },
+        {
+          "type": "code",
+          "value": "# Combining all types of parameters\ndef example_function(a, b, *args, c=10, **kwargs):\n    print(f\"a: {a}, b: {b}, c: {c}\")\n    print(f\"args: {args}\")\n    print(f\"kwargs: {kwargs}\")\n\n# Call with various arguments\nexample_function(1, 2, 3, 4, 5, c=20, name=\"Alice\", age=30)\n# Output:\n# a: 1, b: 2, c: 20\n# args: (3, 4, 5)\n# kwargs: {'name': 'Alice', 'age': 30}"
+        },
+        {
+          "type": "tip",
+          "value": "The names 'args' and 'kwargs' are conventions, but you can use any valid variable name. The * and ** syntax is what's important."
+        }
+      ]
+    },
+    {
+      "title": "Scope and Lifetime of Variables",
+      "content": [
+        {
+          "type": "text",
+          "value": "Variables defined inside a function only exist within that function's scope. Once the function completes, these local variables are destroyed."
+        },
+        {
+          "type": "code",
+          "value": "# Local and global scope example\n\n# Global variable\nglobal_var = \"I am global\"\n\ndef my_function():\n    # Local variable\n    local_var = \"I am local\"\n    print(global_var)  # Can access global variable\n    print(local_var)   # Can access local variable\n\nmy_function()\n\n# This works\nprint(global_var)\n\n# This would raise an error\n# print(local_var)  # NameError: name 'local_var' is not defined"
+        },
+        {
+          "type": "text",
+          "value": "If you need to modify a global variable from inside a function, you need to use the <code>global</code> keyword:"
+        },
+        {
+          "type": "code",
+          "value": "# Modifying global variables\ncount = 0\n\ndef increment():\n    global count  # Declare that we're using the global variable\n    count += 1\n    print(f\"Count inside function: {count}\")\n\nincrement()\nprint(f\"Count outside function: {count}\")"
+        },
+        {
+          "type": "warning",
+          "value": "While Python allows you to modify global variables with the <code>global</code> keyword, it's generally considered better practice to pass variables as parameters and return modified values."
+        }
+      ]
+    },
+    {
+      "title": "Docstrings and Documentation",
+      "content": [
+        {
+          "type": "text",
+          "value": "Good functions should include documentation about what they do, their parameters, and their return values. In Python, this is done using docstrings - string literals that appear right after the function definition."
+        },
+        {
+          "type": "code",
+          "value": "# Function with a docstring\ndef calculate_area(length, width):\n    \"\"\"Calculate the area of a rectangle.\n    \n    Args:\n        length (float): The length of the rectangle.\n        width (float): The width of the rectangle.\n        \n    Returns:\n        float: The area of the rectangle.\n    \"\"\"\n    return length * width\n\n# Access the docstring\nprint(calculate_area.__doc__)"
+        },
+        {
+          "type": "text",
+          "value": "IDEs and documentation tools can use docstrings to provide help and generate documentation. You can also access the docstring using the <code>help()</code> function:"
+        },
+        {
+          "type": "code",
+          "value": "help(calculate_area)\n# Output:\n# Help on function calculate_area in module __main__:\n#\n# calculate_area(length, width)\n#     Calculate the area of a rectangle.\n#     \n#     Args:\n#         length (float): The length of the rectangle.\n#         width (float): The width of the rectangle.\n#         \n#     Returns:\n#         float: The area of the rectangle."
+        },
+        {
+          "type": "tip",
+          "value": "Docstrings are a form of self-documentation. They make your code more understandable and maintainable, especially for other developers who might use your functions."
+        }
+      ]
+    },
+    {
+      "title": "Lambda Functions",
+      "content": [
+        {
+          "type": "text",
+          "value": "Lambda functions (also called anonymous functions) are small, inline functions defined with the <code>lambda</code> keyword. They can take any number of arguments, but can only have one expression."
+        },
+        {
+          "type": "code",
+          "value": "# Regular function\ndef add(a, b):\n    return a + b\n\n# Equivalent lambda function\nadd_lambda = lambda a, b: a + b\n\n# Both produce the same result\nprint(add(5, 3))        # Output: 8\nprint(add_lambda(5, 3))  # Output: 8"
+        },
+        {
+          "type": "text",
+          "value": "Lambda functions are particularly useful when you need a simple function for a short period of time, especially with functions like <code>map()</code>, <code>filter()</code>, and <code>sorted()</code>."
+        },
+        {
+          "type": "code",
+          "value": "# Using lambda with map()\nnumbers = [1, 2, 3, 4, 5]\nsquares = list(map(lambda x: x**2, numbers))\nprint(squares)  # Output: [1, 4, 9, 16, 25]\n\n# Using lambda with filter()\neven_numbers = list(filter(lambda x: x % 2 == 0, numbers))\nprint(even_numbers)  # Output: [2, 4]\n\n# Using lambda with sorted()\nstudents = [(\"Alice\", 85), (\"Bob\", 92), (\"Charlie\", 78)]\n# Sort by score (second element of tuple)\nsorted_by_score = sorted(students, key=lambda student: student[1], reverse=True)\nprint(sorted_by_score)  # Output: [('Bob', 92), ('Alice', 85), ('Charlie', 78)]"
+        },
+        {
+          "type": "note",
+          "value": "While lambda functions are concise, they are limited to a single expression and cannot contain multiple statements or complex logic. For anything more than a simple expression, use a regular function."
+        }
+      ]
+    },
+    {
+      "title": "Recursion",
+      "content": [
+        {
+          "type": "text",
+          "value": "Recursion is a technique where a function calls itself to solve a problem. It's particularly useful for problems that can be broken down into smaller, similar subproblems."
+        },
+        {
+          "type": "code",
+          "value": "# Recursive function to calculate factorial\ndef factorial(n):\n    \"\"\"Calculate the factorial of a number recursively.\"\"\"\n    # Base case\n    if n == 0 or n == 1:\n        return 1\n    # Recursive case\n    else:\n        return n * factorial(n - 1)\n\n# Test the function\nprint(factorial(5))  # Output: 120 (5 * 4 * 3 * 2 * 1)"
+        },
+        {
+          "type": "text",
+          "value": "Let's trace the execution of <code>factorial(5)</code>:"
+        },
+        {
+          "type": "text",
+          "value": "<ul><li><code>factorial(5)</code> returns <code>5 * factorial(4)</code></li><li><code>factorial(4)</code> returns <code>4 * factorial(3)</code></li><li><code>factorial(3)</code> returns <code>3 * factorial(2)</code></li><li><code>factorial(2)</code> returns <code>2 * factorial(1)</code></li><li><code>factorial(1)</code> returns <code>1</code> (base case)</li><li>Now the recursion unwinds: <code>2 * 1 = 2</code>, <code>3 * 2 = 6</code>, <code>4 * 6 = 24</code>, <code>5 * 24 = 120</code></li></ul>"
+        },
+        {
+          "type": "warning",
+          "value": "Every recursive function must have a base case to prevent infinite recursion. Also, be aware that deeply nested recursion can cause a stack overflow error."
+        }
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Temperature Converter",
+      "description": "A function to convert between different temperature units.",
+      "code": "# Temperature converter function\n\ndef convert_temperature(value, from_unit, to_unit):\n    \"\"\"Convert temperature between Celsius, Fahrenheit, and Kelvin.\n    \n    Args:\n        value (float): The temperature value to convert.\n        from_unit (str): The unit to convert from ('C', 'F', or 'K').\n        to_unit (str): The unit to convert to ('C', 'F', or 'K').\n        \n    Returns:\n        float: The converted temperature value.\n    \"\"\"\n    # Convert to Celsius first (as an intermediate step)\n    if from_unit.upper() == 'C':\n        celsius = value\n    elif from_unit.upper() == 'F':\n        celsius = (value - 32) * 5/9\n    elif from_unit.upper() == 'K':\n        celsius = value - 273.15\n    else:\n        raise ValueError(\"Invalid 'from_unit'. Use 'C', 'F', or 'K'.\")\n    \n    # Convert from Celsius to the target unit\n    if to_unit.upper() == 'C':\n        return celsius\n    elif to_unit.upper() == 'F':\n        return (celsius * 9/5) + 32\n    elif to_unit.upper() == 'K':\n        return celsius + 273.15\n    else:\n        raise ValueError(\"Invalid 'to_unit'. Use 'C', 'F', or 'K'.\")\n\n# Test the function\nprint(f\"32°F = {convert_temperature(32, 'F', 'C'):.2f}°C\")\nprint(f\"100°C = {convert_temperature(100, 'C', 'F'):.2f}°F\")\nprint(f\"0°C = {convert_temperature(0, 'C', 'K'):.2f}K\")\nprint(f\"300K = {convert_temperature(300, 'K', 'C'):.2f}°C\")",
+      "output": "32°F = 0.00°C\n100°C = 212.00°F\n0°C = 273.15K\n300K = 26.85°C",
+      "explanation": "This function converts temperatures between Celsius, Fahrenheit, and Kelvin. It first converts the input temperature to Celsius as an intermediate step, then converts from Celsius to the target unit. The function includes error checking for invalid units and proper documentation."
+    },
+    {
+      "title": "Password Validator",
+      "description": "A function to check if a password meets certain security requirements.",
+      "code": "# Password validation function\n\ndef validate_password(password):\n    \"\"\"Check if a password meets security requirements.\n    \n    Requirements:\n    - At least 8 characters long\n    - Contains at least one uppercase letter\n    - Contains at least one lowercase letter\n    - Contains at least one digit\n    - Contains at least one special character (@, #, $, %, &, *)\n    \n    Args:\n        password (str): The password to validate.\n        \n    Returns:\n        tuple: (bool, str) - (is_valid, message)\n    \"\"\"\n    # Initialize requirements check\n    has_upper = False\n    has_lower = False\n    has_digit = False\n    has_special = False\n    special_chars = \"@#$%&*\"\n    \n    # Check length\n    if len(password) < 8:\n        return False, \"Password must be at least 8 characters long.\"\n    \n    # Check character types\n    for char in password:\n        if char.isupper():\n            has_upper = True\n        elif char.islower():\n            has_lower = True\n        elif char.isdigit():\n            has_digit = True\n        elif char in special_chars:\n            has_special = True\n    \n    # Build error message for missing requirements\n    error_message = \"Password must contain: \"\n    missing_requirements = []\n    \n    if not has_upper:\n        missing_requirements.append(\"an uppercase letter\")\n    if not has_lower:\n        missing_requirements.append(\"a lowercase letter\")\n    if not has_digit:\n        missing_requirements.append(\"a digit\")\n    if not has_special:\n        missing_requirements.append(\"a special character (@, #, $, %, &, *)\")\n    \n    # If any requirements are missing, return False with the error message\n    if missing_requirements:\n        error_message += \", \".join(missing_requirements) + \".\"\n        return False, error_message\n    \n    # All requirements met\n    return True, \"Password is valid.\"\n\n# Test the function with different passwords\npasswords = [\n    \"abc123\",              # Too short\n    \"PASSWORD123!\",        # No lowercase\n    \"password123!\",        # No uppercase\n    \"Password!\",           # No digit\n    \"Password123\",         # No special character\n    \"Password123!\"         # Valid\n]\n\nfor pwd in passwords:\n    is_valid, message = validate_password(pwd)\n    print(f\"Password: {pwd}\")\n    print(f\"Valid: {is_valid}\")\n    print(f\"Message: {message}\\n\")",
+      "output": "Password: abc123\nValid: False\nMessage: Password must be at least 8 characters long.\n\nPassword: PASSWORD123!\nValid: False\nMessage: Password must contain: a lowercase letter.\n\nPassword: password123!\nValid: False\nMessage: Password must contain: an uppercase letter.\n\nPassword: Password!\nValid: False\nMessage: Password must contain: a digit.\n\nPassword: Password123\nValid: False\nMessage: Password must contain: a special character (@, #, $, %, &, *).\n\nPassword: Password123!\nValid: False\nMessage: Password must contain: a special character (@, #, $, %, &, *).",
+      "explanation": "This function validates passwords based on common security requirements. It checks the length and character composition of the password, then returns a tuple containing a boolean (is the password valid) and a message describing the validation result. The function provides specific feedback about which requirements are not met."
+    },
+    {
+      "title": "Word Counter",
+      "description": "A function that analyzes text and counts words, characters, and sentences.",
+      "code": "# Word counter and text analyzer function\n\ndef analyze_text(text):\n    \"\"\"Analyze a text and count words, characters, and sentences.\n    \n    Args:\n        text (str): The text to analyze.\n        \n    Returns:\n        dict: A dictionary containing analysis results.\n    \"\"\"\n    if not text or not isinstance(text, str):\n        return {\n            \"words\": 0,\n            \"characters\": 0,\n            \"characters_no_spaces\": 0,\n            \"sentences\": 0,\n            \"average_word_length\": 0,\n            \"average_sentence_length\": 0\n        }\n    \n    # Count characters\n    chars = len(text)\n    chars_no_spaces = len(text.replace(\" \", \"\"))\n    \n    # Count words (split by whitespace)\n    words = text.split()\n    word_count = len(words)\n    \n    # Count sentences (split by '.', '!', or '?')\n    sentences = [s for s in text.replace('!', '.').replace('?', '.').split('.') if s.strip()]\n    sentence_count = len(sentences)\n    \n    # Calculate averages (handle division by zero)\n    avg_word_length = chars_no_spaces / word_count if word_count > 0 else 0\n    avg_sentence_length = word_count / sentence_count if sentence_count > 0 else 0\n    \n    # Return analysis results\n    return {\n        \"words\": word_count,\n        \"characters\": chars,\n        \"characters_no_spaces\": chars_no_spaces,\n        \"sentences\": sentence_count,\n        \"average_word_length\": round(avg_word_length, 2),\n        \"average_sentence_length\": round(avg_sentence_length, 2)\n    }\n\n# Test the function\nsample_text = \"\"\"Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. Python is dynamically typed and garbage-collected. It supports multiple programming paradigms, including structured, object-oriented, and functional programming.\"\"\"\n\nresults = analyze_text(sample_text)\n\n# Print the results\nprint(\"Text Analysis Results:\")\nfor key, value in results.items():\n    print(f\"{key.replace('_', ' ').title()}: {value}\")",
+      "output": "Text Analysis Results:\nWords: 42\nCharacters: 288\nCharacters No Spaces: 247\nSentences: 3\nAverage Word Length: 5.88\nAverage Sentence Length: 14.0",
+      "explanation": "This function analyzes a text string and returns various statistics, including word count, character count, sentence count, and average word and sentence lengths. It handles edge cases such as empty input and division by zero. The function demonstrates how to parse and process text using string methods."
+    }
+  ],
+  "key_points": [
+    "Functions are reusable blocks of code defined with the 'def' keyword that help organize and modularize your code.",
+    "Functions can accept parameters (inputs) and return values using the 'return' statement.",
+    "Default parameters provide default values for function arguments that aren't specified when the function is called.",
+    "Keyword arguments allow you to specify arguments by name, making function calls more readable and flexible.",
+    "Variable-length arguments (*args and **kwargs) allow functions to accept any number of positional or keyword arguments.",
+    "Variables defined inside a function are local to that function and have a limited scope and lifetime.",
+    "Docstrings document what a function does, its parameters, and return values, making code more maintainable.",
+    "Lambda functions are anonymous, inline functions defined with the 'lambda' keyword, useful for short, simple operations."
+  ],
+  "common_mistakes": [
+    "Forgetting to include a return statement when a function should return a value.",
+    "Using mutable default parameters (like lists or dictionaries), which are created only once when the function is defined.",
+    "Trying to access local variables outside of the function where they were defined.",
+    "Incorrectly ordering parameters; default parameters must come after non-default parameters.",
+    "Modifying global variables without using the 'global' keyword.",
+    "Writing functions that are too long or try to do too many things at once, instead of breaking them into smaller, specialized functions.",
+    "Not documenting functions with proper docstrings, making it harder for others (and your future self) to understand and use them."
+  ],
+  "additional_resources": [
+    {
+      "title": "Python Documentation - Defining Functions",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html#defining-functions",
+      "description": "Official documentation on defining and using functions in Python"
+    },
+    {
+      "title": "Python Function Arguments",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html#more-on-defining-functions",
+      "description": "More details on function arguments, default values, and keyword arguments"
+    },
+    {
+      "title": "Python Lambda Expressions",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html#lambda-expressions",
+      "description": "Documentation on lambda expressions and their uses"
+    },
+    {
+      "title": "Python DocString Conventions - PEP 257",
+      "url": "https://www.python.org/dev/peps/pep-0257/",
+      "description": "Conventions for writing clear and consistent docstrings"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "functions_ex1",
+      "title": "Calculator Function",
+      "description": "Write a function called 'calculator' that takes two numbers and an operator ('+', '-', '*', or '/') as parameters, and returns the result of the operation.",
+      "initial_code": "# Write your code here\n\ndef calculator(num1, num2, operator):\n    # Your code here\n    pass\n\n# Test your function\nprint(calculator(10, 5, '+'))  # Should return 15\nprint(calculator(10, 5, '-'))  # Should return 5\nprint(calculator(10, 5, '*'))  # Should return 50\nprint(calculator(10, 5, '/'))  # Should return 2.0",
+      "test_code": "# Test code\nimport sys\nfrom io import StringIO\n\n# Capture stdout\nold_stdout = sys.stdout\nsys.stdout = mystdout = StringIO()\n\n# Re-run the user's code\nexec(sys.argv[0])\n\n# Restore stdout\nsys.stdout = old_stdout\n\n# Get the output\noutput = mystdout.getvalue()\n\n# Check if it contains the correct results\nexpected_results = ['15', '5', '50', '2.0']\nall_found = all(result in output for result in expected_results)\n\nif all_found:\n    print(\"Test passed!\")\nelse:\n    raise ValueError(\"Your calculator function should correctly perform the four basic math operations: add, subtract, multiply, and divide.\")",
+      "hints": [
+        "Use if/elif statements or a dictionary to handle the different operators.",
+        "For division, be careful about dividing by zero - you might want to handle this edge case.",
+        "Remember that division in Python returns a float, even if the numbers divide evenly.",
+        "You can use the built-in operators (+, -, *, /) directly in your function."
+      ]
+    },
+    {
+      "id": "functions_ex2",
+      "title": "Palindrome Checker",
+      "description": "Write a function called 'is_palindrome' that checks if a string is a palindrome (reads the same forwards and backwards). The function should ignore case, spaces, and punctuation.",
+      "initial_code": "# Write your code here\n\ndef is_palindrome(text):\n    # Your code here\n    pass\n\n# Test your function\nprint(is_palindrome(\"racecar\"))              # Should return True\nprint(is_palindrome(\"A man, a plan, a canal: Panama\"))  # Should return True\nprint(is_palindrome(\"hello\"))                # Should return False",
+      "test_code": "# Test code\nimport sys\nfrom io import StringIO\n\n# Capture stdout\nold_stdout = sys.stdout\nsys.stdout = mystdout = StringIO()\n\n# Re-run the user's code\nexec(sys.argv[0])\n\n# Restore stdout\nsys.stdout = old_stdout\n\n# Get the output\noutput = mystdout.getvalue().lower()\n\n# Check if it contains the correct results\nif 'true' in output and 'false' in output and output.count('true') >= 2:\n    print(\"Test passed!\")\nelse:\n    raise ValueError(\"Your is_palindrome function should correctly identify palindromes while ignoring case, spaces, and punctuation.\")",
+      "hints": [
+        "You'll need to remove spaces, punctuation, and convert the string to lowercase first.",
+        "You can use string methods like replace(), lower(), and isalnum() to process the text.",
+        "One approach is to compare the processed string with its reverse (you can reverse a string with slicing: string[::-1]).",
+        "Remember that an empty string or a string with a single character is a palindrome by definition."
+      ]
+    },
+    {
+      "id": "functions_ex3",
+      "title": "List Processing Functions",
+      "description": "Write three functions to process a list of numbers: 'filter_even' (returns only even numbers), 'square_numbers' (returns squares of each number), and 'sum_list' (returns the sum of all numbers).",
+      "initial_code": "# Write your code here\n\ndef filter_even(numbers):\n    # Return only even numbers from the list\n    pass\n\ndef square_numbers(numbers):\n    # Return squares of all numbers in the list\n    pass\n\ndef sum_list(numbers):\n    # Return the sum of all numbers in the list\n    pass\n\n# Test your functions\nnumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nprint(filter_even(numbers))     # Should return [2, 4, 6, 8, 10]\nprint(square_numbers(numbers))  # Should return [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]\nprint(sum_list(numbers))        # Should return 55",
+      "test_code": "# Test code\nimport sys\nfrom io import StringIO\n\n# Capture stdout\nold_stdout = sys.stdout\nsys.stdout = mystdout = StringIO()\n\n# Re-run the user's code\nexec(sys.argv[0])\n\n# Restore stdout\nsys.stdout = old_stdout\n\n# Get the output\noutput = mystdout.getvalue()\n\n# Check if it contains the correct results\nif '[2, 4, 6, 8, 10]' in output and '[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]' in output and '55' in output:\n    print(\"Test passed!\")\nelse:\n    raise ValueError(\"Your functions should correctly filter even numbers, square all numbers, and calculate the sum of all numbers in the list.\")",
+      "hints": [
+        "For filter_even, use a list comprehension with a condition to keep only even numbers: [x for x in numbers if x % 2 == 0]",
+        "For square_numbers, use a list comprehension to transform each number: [x**2 for x in numbers]",
+        "For sum_list, you can use Python's built-in sum() function directly: sum(numbers)",
+        "Alternatively, you can implement these functions using loops if you're not comfortable with list comprehensions."
+      ]
+    }
+  ]
+}

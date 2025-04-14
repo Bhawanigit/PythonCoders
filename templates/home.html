@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+
+{% block title %}Python Learning Platform - Home{% endblock %}
+
+{% block content %}
+<div class="row align-items-center mb-5">
+    <div class="col-lg-6">
+        <h1 class="display-4 fw-bold mb-4">Learn Python Programming</h1>
+        <p class="lead mb-4">Master the fundamentals of Python programming with our interactive lessons and hands-on exercises designed for beginners.</p>
+        
+        {% if not current_user.is_authenticated %}
+        <div class="d-grid gap-2 d-md-flex mb-4">
+            <a href="{{ url_for('register') }}" class="btn btn-primary me-md-2">
+                <i class="fas fa-user-plus me-2"></i> Create Free Account
+            </a>
+            <a href="{{ url_for('login') }}" class="btn btn-outline-light">
+                <i class="fas fa-sign-in-alt me-2"></i> Login
+            </a>
+        </div>
+        {% endif %}
+    </div>
+    <div class="col-lg-6">
+        <div class="card bg-dark-subtle border-0 shadow-lg">
+            <div class="card-body p-4">
+                <div class="code-block">
+                    <div class="code-header">
+                        <button class="btn btn-sm btn-outline-light" onclick="copyCode(this)">
+                            <i class="far fa-copy me-1"></i> Copy
+                        </button>
+                    </div>
+                    <div class="code-content">
+<pre class="text-light">
+# Your first Python program
+def greet(name):
+    return f"Hello, {name}! Welcome to Python!"
+
+# Call the function
+message = greet("Learner")
+print(message)
+
+# Output: Hello, Learner! Welcome to Python!
+</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="my-5">
+    <h2 class="mb-4">Learning Path</h2>
+    <div class="row g-4">
+        {% for topic in topics %}
+        <div class="col-md-6 col-lg-3">
+            <div class="card topic-card h-100 bg-dark-subtle {% if topic.id in completed_lessons %}completed{% endif %}">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="progress-circle {% if topic.id in completed_lessons %}progress-completed{% else %}progress-incomplete{% endif %} me-2">
+                            {% if topic.id in completed_lessons %}
+                            <i class="fas fa-check"></i>
+                            {% else %}
+                            {{ loop.index }}
+                            {% endif %}
+                        </div>
+                        <h5 class="card-title mb-0">{{ topic.title }}</h5>
+                    </div>
+                    <p class="card-text text-muted">{{ topic.description }}</p>
+                </div>
+                <div class="card-footer bg-transparent border-0 d-grid">
+                    <a href="{{ url_for('lesson', lesson_id=topic.id) }}" class="btn btn-outline-light">
+                        {% if topic.id in completed_lessons %}
+                        <i class="fas fa-redo me-2"></i> Review Lesson
+                        {% else %}
+                        <i class="fas fa-book-open me-2"></i> Start Learning
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="my-5 bg-dark-subtle p-4 rounded-3">
+    <div class="row align-items-center">
+        <div class="col-lg-7">
+            <h2 class="mb-3">Why Learn Python?</h2>
+            <ul class="list-group list-group-flush bg-transparent">
+                <li class="list-group-item bg-transparent border-0 mb-2">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <strong>Easy to Learn:</strong> Python has a simple syntax that is easy to understand and read.
+                </li>
+                <li class="list-group-item bg-transparent border-0 mb-2">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <strong>Versatile:</strong> Used in web development, data science, AI, automation, and more.
+                </li>
+                <li class="list-group-item bg-transparent border-0 mb-2">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <strong>High Demand:</strong> One of the most in-demand programming skills in the job market.
+                </li>
+                <li class="list-group-item bg-transparent border-0 mb-2">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <strong>Powerful Libraries:</strong> Access to thousands of libraries for various applications.
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-5">
+            <div class="card bg-dark border-0 shadow">
+                <div class="card-body p-4">
+                    <h5 class="mb-3 text-info"><i class="fas fa-rocket me-2"></i> Start Your Learning Journey</h5>
+                    <p>Our interactive platform makes learning Python easy and fun. Start with the basics and progress at your own pace.</p>
+                    <div class="d-grid">
+                        <a href="{{ url_for('lesson', lesson_id='syntax') }}" class="btn btn-info">Begin with Python Syntax</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="my-5">
+    <h2 class="mb-4">What You'll Learn</h2>
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card h-100 bg-dark-subtle">
+                <div class="card-body">
+                    <h5 class="card-title text-info"><i class="fas fa-code me-2"></i> Python Syntax</h5>
+                    <p class="card-text">Learn the basic structure and rules of Python code. Understand indentation, comments, and how to write your first Python program.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100 bg-dark-subtle">
+                <div class="card-body">
+                    <h5 class="card-title text-info"><i class="fas fa-database me-2"></i> Data Types</h5>
+                    <p class="card-text">Explore Python's built-in data types like strings, numbers, lists, tuples, dictionaries, and sets. Learn how to manipulate and convert between types.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100 bg-dark-subtle">
+                <div class="card-body">
+                    <h5 class="card-title text-info"><i class="fas fa-sync me-2"></i> Loops</h5>
+                    <p class="card-text">Master the art of repetition with for and while loops. Learn how to iterate through collections and control flow with break and continue statements.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100 bg-dark-subtle">
+                <div class="card-body">
+                    <h5 class="card-title text-info"><i class="fas fa-cubes me-2"></i> Functions</h5>
+                    <p class="card-text">Create reusable blocks of code with functions. Learn about parameters, return values, variable scope, and how to organize your code effectively.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

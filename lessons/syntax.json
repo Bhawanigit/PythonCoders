@@ -1,0 +1,208 @@
+{
+  "title": "Python Syntax",
+  "description": "Learn the basic structure and rules of Python code",
+  "prev_lesson": null,
+  "next_lesson": "data_types",
+  "sections": [
+    {
+      "title": "Introduction to Python Syntax",
+      "content": [
+        {
+          "type": "text",
+          "value": "Python is known for its clean and readable syntax. Unlike many other programming languages, Python uses indentation to define code blocks instead of curly braces or keywords."
+        },
+        {
+          "type": "text",
+          "value": "This approach forces programmers to write neatly indented code, making Python code consistent and easy to read across different projects and developers."
+        }
+      ]
+    },
+    {
+      "title": "Indentation",
+      "content": [
+        {
+          "type": "text",
+          "value": "In Python, indentation is not just for readability — it's a core part of the syntax. Indentation uses spaces at the beginning of a line to define the level of nesting in a block of code."
+        },
+        {
+          "type": "code",
+          "value": "# Correct indentation\nif True:\n    print(\"This is indented correctly\")\n    if True:\n        print(\"Another level of indentation\")\n\n# Incorrect indentation will cause an error\nif True:\nprint(\"This will cause an error\")"
+        },
+        {
+          "type": "note",
+          "value": "The standard indentation in Python is 4 spaces per level. While you can use tabs, it's recommended to stick with spaces for consistency."
+        }
+      ]
+    },
+    {
+      "title": "Comments",
+      "content": [
+        {
+          "type": "text",
+          "value": "Comments are lines in your code that are ignored by the Python interpreter. They are useful for explaining what your code does, making notes for yourself or other developers."
+        },
+        {
+          "type": "code",
+          "value": "# This is a single-line comment\n\n# You can have multiple\n# single-line comments\n\n\"\"\"\nThis is a multi-line comment or docstring.\nIt can span multiple lines and is often used\nfor documentation.\n\"\"\"\n\nx = 5  # You can also put comments at the end of a line"
+        }
+      ]
+    },
+    {
+      "title": "Statements and Expressions",
+      "content": [
+        {
+          "type": "text",
+          "value": "A Python program consists of a sequence of statements. A statement is a complete line of code that performs some action."
+        },
+        {
+          "type": "code",
+          "value": "# These are statements\nx = 10\nprint(\"Hello, World!\")\n\n# This is an expression\nx + 5"
+        },
+        {
+          "type": "text",
+          "value": "Expressions are combinations of values, variables, and operators that evaluate to a single value. Expressions can be part of statements."
+        }
+      ]
+    },
+    {
+      "title": "Variables and Assignment",
+      "content": [
+        {
+          "type": "text",
+          "value": "In Python, you can create variables by simply assigning a value to a name. You don't need to declare the variable type beforehand."
+        },
+        {
+          "type": "code",
+          "value": "# Variable assignment\nname = \"John\"\nage = 30\nis_student = True\n\n# Multiple assignment\nx, y, z = 1, 2, 3\n\n# Value swapping\na = 5\nb = 10\na, b = b, a  # Now a is 10 and b is 5"
+        },
+        {
+          "type": "note",
+          "value": "Variable names in Python are case-sensitive, so <code>name</code> and <code>Name</code> would be considered different variables."
+        }
+      ]
+    },
+    {
+      "title": "Python Print Function",
+      "content": [
+        {
+          "type": "text",
+          "value": "The <code>print()</code> function is used to display output to the console. It's one of the most basic and frequently used functions in Python."
+        },
+        {
+          "type": "code",
+          "value": "# Basic print statement\nprint(\"Hello, World!\")\n\n# Printing multiple items\nprint(\"Name:\", \"John\", \"Age:\", 30)\n\n# Using formatted strings (f-strings) - Python 3.6+\nname = \"Jane\"\nage = 25\nprint(f\"My name is {name} and I am {age} years old.\")\n\n# Using .format() method\nprint(\"My name is {} and I am {} years old.\".format(name, age))"
+        }
+      ]
+    },
+    {
+      "title": "Input Function",
+      "content": [
+        {
+          "type": "text",
+          "value": "The <code>input()</code> function allows your program to receive user input from the console."
+        },
+        {
+          "type": "code",
+          "value": "# Getting user input\nname = input(\"What is your name? \")\nprint(f\"Hello, {name}!\")\n\n# Note: input() always returns a string\n# You need to convert it to other types if needed\nage = int(input(\"How old are you? \"))\nyear_of_birth = 2023 - age\nprint(f\"You were born around {year_of_birth}.\")"
+        },
+        {
+          "type": "warning",
+          "value": "Always validate user input before using it, especially when converting to other types. If a user enters non-numeric input to the age question above, the program will crash."
+        }
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Hello World Program",
+      "description": "The traditional first program in any programming language.",
+      "code": "# A simple Hello World program\nprint(\"Hello, World!\")",
+      "output": "Hello, World!",
+      "explanation": "This program uses the print function to display 'Hello, World!' to the console."
+    },
+    {
+      "title": "Simple Calculator",
+      "description": "A basic calculator that performs arithmetic operations.",
+      "code": "# Simple calculator program\n\n# Get two numbers from the user\nnum1 = float(input(\"Enter the first number: \"))\nnum2 = float(input(\"Enter the second number: \"))\n\n# Perform calculations\nsum_result = num1 + num2\ndifference = num1 - num2\nproduct = num1 * num2\n\n# Handle division by zero error\nif num2 != 0:\n    quotient = num1 / num2\nelse:\n    quotient = \"Cannot divide by zero\"\n\n# Display results\nprint(f\"Sum: {sum_result}\")\nprint(f\"Difference: {difference}\")\nprint(f\"Product: {product}\")\nprint(f\"Quotient: {quotient}\")",
+      "output": "Enter the first number: 10\nEnter the second number: 5\nSum: 15.0\nDifference: 5.0\nProduct: 50.0\nQuotient: 2.0",
+      "explanation": "This program takes two numbers as input, performs basic arithmetic operations and displays the results. It also includes error handling for division by zero."
+    },
+    {
+      "title": "Temperature Converter",
+      "description": "Convert temperature between Celsius and Fahrenheit.",
+      "code": "# Temperature converter\n\n# Get temperature value and unit from user\ntemp = float(input(\"Enter temperature value: \"))\nunit = input(\"Enter unit (C for Celsius, F for Fahrenheit): \").upper()\n\n# Convert and display result\nif unit == \"C\":\n    # Convert Celsius to Fahrenheit\n    fahrenheit = (temp * 9/5) + 32\n    print(f\"{temp}°C is equal to {fahrenheit}°F\")\nelif unit == \"F\":\n    # Convert Fahrenheit to Celsius\n    celsius = (temp - 32) * 5/9\n    print(f\"{temp}°F is equal to {celsius}°C\")\nelse:\n    print(\"Invalid unit. Please enter C or F.\")",
+      "output": "Enter temperature value: 100\nEnter unit (C for Celsius, F for Fahrenheit): C\n100.0°C is equal to 212.0°F",
+      "explanation": "This program converts temperatures between Celsius and Fahrenheit. It demonstrates user input, conditionals, and arithmetic operations."
+    }
+  ],
+  "key_points": [
+    "Python uses indentation to define blocks of code, usually 4 spaces per level.",
+    "Comments start with # for single-line comments and \"\"\" for multi-line comments.",
+    "Variables are created by assignment and don't need to be declared with a type.",
+    "The print() function displays output to the console.",
+    "The input() function gets user input as a string.",
+    "Python is case-sensitive, so variable names like name and Name are distinct."
+  ],
+  "common_mistakes": [
+    "Mixing tabs and spaces for indentation can cause errors that are hard to spot.",
+    "Forgetting that input() returns a string, so you need to convert it to numbers with int() or float() when needed.",
+    "Inconsistent indentation levels leading to unexpected behavior or IndentationError.",
+    "Forgetting to add the colon (:) at the end of statements that start a block (like if, for, while, etc.).",
+    "Using assignment (=) when testing for equality (==) in conditions."
+  ],
+  "additional_resources": [
+    {
+      "title": "PEP 8 - Style Guide for Python Code",
+      "url": "https://www.python.org/dev/peps/pep-0008/",
+      "description": "The official Python style guide"
+    },
+    {
+      "title": "Python Documentation - Built-in Functions",
+      "url": "https://docs.python.org/3/library/functions.html",
+      "description": "Official documentation on Python's built-in functions"
+    },
+    {
+      "title": "Python's input() function",
+      "url": "https://docs.python.org/3/library/functions.html#input",
+      "description": "Detailed information about the input function"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "syntax_ex1",
+      "title": "Hello Name",
+      "description": "Write a program that asks the user for their name and then greets them with a personalized message.",
+      "initial_code": "# Write your code here\n\n# Ask for the user's name\n\n# Print a personalized greeting",
+      "test_code": "# Test code\nimport sys\nfrom io import StringIO\n\n# Capture stdout\nold_stdout = sys.stdout\nsys.stdout = mystdout = StringIO()\n\n# Provide a test input\nsys.stdin = StringIO(\"Alice\\n\")\n\n# Re-run the user's code\nexec(sys.argv[0])\n\n# Restore stdout\nsys.stdout = old_stdout\n\n# Get the output\noutput = mystdout.getvalue().lower()\n\n# Check if it contains the name and some form of greeting\nif \"alice\" in output and (\"hello\" in output or \"hi\" in output or \"greetings\" in output or \"welcome\" in output):\n    print(\"Test passed!\")\nelse:\n    raise ValueError(\"Your program should greet the user by name.\")",
+      "hints": [
+        "Use input() to get the user's name and store it in a variable.",
+        "Use print() to display the greeting message.",
+        "You can use string concatenation (+) or f-strings to include the name in your message."
+      ]
+    },
+    {
+      "id": "syntax_ex2",
+      "title": "Simple Calculator",
+      "description": "Create a program that asks the user for two numbers and an operation (+, -, *, /) and then performs that operation on the numbers.",
+      "initial_code": "# Write your code here\n\n# Ask for two numbers\n\n# Ask for an operation\n\n# Perform the operation and print the result",
+      "test_code": "# Test code\nimport sys\nfrom io import StringIO\n\n# Capture stdout\nold_stdout = sys.stdout\nsys.stdout = mystdout = StringIO()\n\n# Provide test inputs\nsys.stdin = StringIO(\"10\\n5\\n+\\n\")\n\n# Re-run the user's code\nexec(sys.argv[0])\n\n# Restore stdout\nsys.stdout = old_stdout\n\n# Get the output\noutput = mystdout.getvalue()\n\n# Check if the result is correct\nif \"15\" in output:\n    print(\"Test passed!\")\nelse:\n    raise ValueError(\"Your calculator should handle basic operations correctly. When adding 10 and 5, the result should be 15.\")",
+      "hints": [
+        "You'll need to convert the input numbers from strings to integers or floats using int() or float().",
+        "Use conditional statements (if, elif, else) to decide which operation to perform.",
+        "Be careful with division - you might want to handle the case where the user tries to divide by zero."
+      ]
+    },
+    {
+      "id": "syntax_ex3",
+      "title": "Temperature Converter",
+      "description": "Write a program that converts temperatures between Celsius and Fahrenheit. Ask the user for a temperature and the current unit (C or F), then convert it to the other unit.",
+      "initial_code": "# Write your code here\n\n# Get the temperature and current unit\n\n# Convert to the other unit\n\n# Display the result",
+      "test_code": "# Test code\nimport sys\nfrom io import StringIO\n\n# Capture stdout\nold_stdout = sys.stdout\nsys.stdout = mystdout = StringIO()\n\n# Provide test inputs for Celsius to Fahrenheit\nsys.stdin = StringIO(\"100\\nC\\n\")\n\n# Re-run the user's code\nexec(sys.argv[0])\n\n# Get the output\noutput = mystdout.getvalue()\n\n# Check if the conversion is roughly correct (allowing for rounding differences)\nif \"212\" in output and \"f\" in output.lower():\n    print(\"Test passed!\")\nelse:\n    raise ValueError(\"Your temperature converter should correctly convert 100°C to 212°F.\")",
+      "hints": [
+        "The formula to convert Celsius to Fahrenheit is: (C × 9/5) + 32 = F",
+        "The formula to convert Fahrenheit to Celsius is: (F - 32) × 5/9 = C",
+        "Remember to handle case sensitivity for the units (upper or lowercase)."
+      ]
+    }
+  ]
+}

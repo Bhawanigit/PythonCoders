@@ -1,0 +1,336 @@
+{
+  "title": "Python Loops",
+  "description": "Master the art of repetition with for and while loops in Python",
+  "prev_lesson": "data_types",
+  "next_lesson": "functions",
+  "sections": [
+    {
+      "title": "Introduction to Loops",
+      "content": [
+        {
+          "type": "text",
+          "value": "Loops are a fundamental concept in programming that allow you to execute a block of code multiple times. They are essential for tasks that require repetition, such as processing items in a collection, performing calculations multiple times, or repeatedly asking for user input until certain conditions are met."
+        },
+        {
+          "type": "text",
+          "value": "Python provides two main types of loops:"
+        },
+        {
+          "type": "text",
+          "value": "<ul><li><strong>for loops</strong>: Used to iterate over a sequence (like a list, tuple, dictionary, set, or string) or other iterable objects.</li><li><strong>while loops</strong>: Used to execute a block of code as long as a condition is true.</li></ul>"
+        }
+      ]
+    },
+    {
+      "title": "For Loops",
+      "content": [
+        {
+          "type": "text",
+          "value": "The for loop in Python is used to iterate over a sequence (list, tuple, string) or other iterable objects. It's the most common loop type you'll use in Python."
+        },
+        {
+          "type": "code",
+          "value": "# Basic for loop with a list\nfruits = [\"apple\", \"banana\", \"cherry\"]\nfor fruit in fruits:\n    print(fruit)\n\n# Output:\n# apple\n# banana\n# cherry"
+        },
+        {
+          "type": "text",
+          "value": "The loop iterates over each item in the sequence, assigning it to the variable (fruit in this case) and executing the indented block of code."
+        },
+        {
+          "type": "code",
+          "value": "# For loop with a string\nfor character in \"Python\":\n    print(character)\n\n# Output:\n# P\n# y\n# t\n# h\n# o\n# n"
+        },
+        {
+          "type": "note",
+          "value": "When iterating over a string, the loop variable takes each character one at a time."
+        }
+      ]
+    },
+    {
+      "title": "The range() Function",
+      "content": [
+        {
+          "type": "text",
+          "value": "The <code>range()</code> function is commonly used with for loops when you need to repeat an action a specific number of times. It generates a sequence of numbers."
+        },
+        {
+          "type": "code",
+          "value": "# Using range() to generate a sequence of numbers\nfor i in range(5):  # 0, 1, 2, 3, 4\n    print(i)\n\n# Output:\n# 0\n# 1\n# 2\n# 3\n# 4"
+        },
+        {
+          "type": "text",
+          "value": "The <code>range()</code> function can take up to three arguments:"
+        },
+        {
+          "type": "code",
+          "value": "# range(start, stop, step)\n\n# Just stop (start=0, step=1 by default)\nfor i in range(3):  # 0, 1, 2\n    print(i)\n\n# Start and stop (step=1 by default)\nfor i in range(2, 5):  # 2, 3, 4\n    print(i)\n\n# Start, stop, and step\nfor i in range(1, 10, 2):  # 1, 3, 5, 7, 9\n    print(i)\n\n# Negative step (counting down)\nfor i in range(10, 0, -1):  # 10, 9, 8, 7, 6, 5, 4, 3, 2, 1\n    print(i)"
+        },
+        {
+          "type": "tip",
+          "value": "If you need to iterate over a sequence along with its index, use the <code>enumerate()</code> function: <code>for index, value in enumerate(sequence):</code>"
+        }
+      ]
+    },
+    {
+      "title": "Looping Through Collections",
+      "content": [
+        {
+          "type": "text",
+          "value": "For loops can iterate through any iterable object in Python, including lists, tuples, dictionaries, and sets."
+        },
+        {
+          "type": "code",
+          "value": "# Iterating through a list\nnumbers = [1, 2, 3, 4, 5]\nfor num in numbers:\n    print(num * 2)  # Multiply each number by 2\n\n# Iterating through a tuple\ncolors = (\"red\", \"green\", \"blue\")\nfor color in colors:\n    print(f\"The color is {color}\")\n\n# Iterating through a dictionary\nstudent = {\"name\": \"John\", \"age\": 20, \"grade\": \"A\"}\n\n# Loop through keys\nfor key in student:\n    print(key)  # Prints: name, age, grade\n\n# Loop through values\nfor value in student.values():\n    print(value)  # Prints: John, 20, A\n\n# Loop through key-value pairs\nfor key, value in student.items():\n    print(f\"{key}: {value}\")  # Prints: name: John, age: 20, grade: A"
+        },
+        {
+          "type": "note",
+          "value": "When looping through a dictionary with just <code>for key in dict:</code>, you only get the keys. Use <code>dict.values()</code> or <code>dict.items()</code> to access values."
+        }
+      ]
+    },
+    {
+      "title": "While Loops",
+      "content": [
+        {
+          "type": "text",
+          "value": "A while loop executes a block of code as long as a condition is true. This type of loop is useful when you don't know in advance how many times the loop needs to run."
+        },
+        {
+          "type": "code",
+          "value": "# Basic while loop\ncount = 0\nwhile count < 5:\n    print(count)\n    count += 1  # Increment count by 1\n\n# Output:\n# 0\n# 1\n# 2\n# 3\n# 4"
+        },
+        {
+          "type": "warning",
+          "value": "Always ensure that the condition in a while loop will eventually become false, otherwise you'll create an infinite loop that never stops (unless manually interrupted)."
+        },
+        {
+          "type": "code",
+          "value": "# Example: Using a while loop for user input\n\n# This code keeps asking for input until the user enters 'quit'\nuser_input = \"\"\nwhile user_input.lower() != \"quit\":\n    user_input = input(\"Enter something (type 'quit' to exit): \")\n    if user_input.lower() != \"quit\":\n        print(f\"You entered: {user_input}\")"
+        },
+        {
+          "type": "tip",
+          "value": "While loops are particularly useful for validation loops, where you need to keep prompting the user until they enter valid input."
+        }
+      ]
+    },
+    {
+      "title": "Loop Control Statements",
+      "content": [
+        {
+          "type": "text",
+          "value": "Python provides several statements to control the flow of loops:"
+        },
+        {
+          "type": "text",
+          "value": "<ul><li><strong>break</strong>: Exits the loop completely</li><li><strong>continue</strong>: Skips the current iteration and moves to the next one</li><li><strong>else</strong>: Executes after the loop completes normally (without a break)</li></ul>"
+        },
+        {
+          "type": "code",
+          "value": "# Break statement example\nfor i in range(1, 11):\n    if i == 5:\n        break  # Exit the loop when i is 5\n    print(i)\n\n# Output: 1 2 3 4"
+        },
+        {
+          "type": "code",
+          "value": "# Continue statement example\nfor i in range(1, 6):\n    if i == 3:\n        continue  # Skip iteration when i is 3\n    print(i)\n\n# Output: 1 2 4 5"
+        },
+        {
+          "type": "code",
+          "value": "# Else clause with for loop\nfor i in range(1, 4):\n    print(i)\nelse:\n    print(\"Loop completed successfully!\")\n\n# Output:\n# 1\n# 2\n# 3\n# Loop completed successfully!"
+        },
+        {
+          "type": "code",
+          "value": "# Else clause with break\nfor i in range(1, 6):\n    if i == 4:\n        break\n    print(i)\nelse:\n    print(\"This won't execute because the loop was broken\")\n\n# Output: 1 2 3"
+        },
+        {
+          "type": "note",
+          "value": "The <code>else</code> clause in a loop is unique to Python and is not common in other programming languages. It executes only if the loop completes all iterations without encountering a <code>break</code>."
+        }
+      ]
+    },
+    {
+      "title": "Nested Loops",
+      "content": [
+        {
+          "type": "text",
+          "value": "Loops can be nested inside other loops, which means having a loop inside another loop. This is useful for working with multi-dimensional data structures or when you need to perform repetitive tasks with multiple levels of iteration."
+        },
+        {
+          "type": "code",
+          "value": "# Nested for loops\nfor i in range(1, 4):  # Outer loop\n    for j in range(1, 4):  # Inner loop\n        print(f\"({i}, {j})\")\n\n# Output:\n# (1, 1)\n# (1, 2)\n# (1, 3)\n# (2, 1)\n# (2, 2)\n# (2, 3)\n# (3, 1)\n# (3, 2)\n# (3, 3)"
+        },
+        {
+          "type": "code",
+          "value": "# Example: Multiplication table\nfor i in range(1, 6):  # Rows (1 to 5)\n    for j in range(1, 6):  # Columns (1 to 5)\n        print(f\"{i * j:2d}\", end=\" \")  # :2d formats the integer to take up 2 spaces\n    print()  # New line after each row\n\n# Output:\n# 1  2  3  4  5\n# 2  4  6  8 10\n# 3  6  9 12 15\n# 4  8 12 16 20\n# 5 10 15 20 25"
+        },
+        {
+          "type": "warning",
+          "value": "Nested loops can be computationally expensive, especially with large datasets. Be cautious when nesting many levels of loops, as the number of iterations grows exponentially."
+        }
+      ]
+    },
+    {
+      "title": "List Comprehensions",
+      "content": [
+        {
+          "type": "text",
+          "value": "List comprehensions provide a concise way to create lists based on existing lists or other iterable objects. They combine the for loop and list creation into a single line of code."
+        },
+        {
+          "type": "code",
+          "value": "# Basic list comprehension\nnumbers = [1, 2, 3, 4, 5]\nsquares = [num**2 for num in numbers]\nprint(squares)  # Output: [1, 4, 9, 16, 25]"
+        },
+        {
+          "type": "text",
+          "value": "List comprehensions can also include conditions with if statements:"
+        },
+        {
+          "type": "code",
+          "value": "# List comprehension with a condition\neven_squares = [num**2 for num in numbers if num % 2 == 0]\nprint(even_squares)  # Output: [4, 16]"
+        },
+        {
+          "type": "code",
+          "value": "# Equivalent to:\neven_squares = []\nfor num in numbers:\n    if num % 2 == 0:\n        even_squares.append(num**2)"
+        },
+        {
+          "type": "text",
+          "value": "You can also have nested list comprehensions:"
+        },
+        {
+          "type": "code",
+          "value": "# Nested list comprehension\nmatrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\nflattened = [num for row in matrix for num in row]\nprint(flattened)  # Output: [1, 2, 3, 4, 5, 6, 7, 8, 9]"
+        },
+        {
+          "type": "tip",
+          "value": "List comprehensions are not only more concise but often faster than equivalent for loops. However, if the logic becomes too complex, it's better to use regular for loops for readability."
+        }
+      ]
+    },
+    {
+      "title": "Dictionary and Set Comprehensions",
+      "content": [
+        {
+          "type": "text",
+          "value": "Similar to list comprehensions, Python also supports dictionary and set comprehensions."
+        },
+        {
+          "type": "code",
+          "value": "# Dictionary comprehension\nnumbers = [1, 2, 3, 4, 5]\nsquares_dict = {num: num**2 for num in numbers}\nprint(squares_dict)  # Output: {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}"
+        },
+        {
+          "type": "code",
+          "value": "# Dictionary comprehension with condition\neven_squares_dict = {num: num**2 for num in numbers if num % 2 == 0}\nprint(even_squares_dict)  # Output: {2: 4, 4: 16}"
+        },
+        {
+          "type": "code",
+          "value": "# Set comprehension\nsquares_set = {num**2 for num in numbers}\nprint(squares_set)  # Output: {1, 4, 9, 16, 25}"
+        },
+        {
+          "type": "text",
+          "value": "These comprehensions provide a concise and efficient way to create dictionaries and sets based on existing iterables."
+        }
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Summing Numbers",
+      "description": "Calculate the sum of numbers from 1 to n using a loop.",
+      "code": "# Sum numbers from 1 to n\n\ndefine n\nn = 10\n\n# Using a for loop\nsum_for = 0\nfor i in range(1, n + 1):\n    sum_for += i\n\nprint(f\"Sum from 1 to {n} using for loop: {sum_for}\")\n\n# Using a while loop\nsum_while = 0\ni = 1\nwhile i <= n:\n    sum_while += i\n    i += 1\n\nprint(f\"Sum from 1 to {n} using while loop: {sum_while}\")\n\n# Using the sum() function with range\nsum_range = sum(range(1, n + 1))\nprint(f\"Sum from 1 to {n} using sum() function: {sum_range}\")",
+      "output": "Sum from 1 to 10 using for loop: 55\nSum from 1 to 10 using while loop: 55\nSum from 1 to 10 using sum() function: 55",
+      "explanation": "This example shows three different ways to calculate the sum of numbers from 1 to n. We use a for loop, a while loop, and Python's built-in sum() function with range()."
+    },
+    {
+      "title": "Finding Prime Numbers",
+      "description": "Find all prime numbers up to a given limit using loops.",
+      "code": "# Find all prime numbers up to a limit\n\ndef is_prime(num):\n    \"\"\"Check if a number is prime\"\"\"\n    if num <= 1:\n        return False\n    if num <= 3:\n        return True\n    if num % 2 == 0 or num % 3 == 0:\n        return False\n    \n    # Check all numbers of form 6k±1 up to sqrt(num)\n    i = 5\n    while i * i <= num:\n        if num % i == 0 or num % (i + 2) == 0:\n            return False\n        i += 6\n    \n    return True\n\n# Find all primes up to limit\nlimit = 30\nprimes = []\n\nfor number in range(2, limit + 1):\n    if is_prime(number):\n        primes.append(number)\n\nprint(f\"Prime numbers up to {limit}: {primes}\")\n\n# Alternative approach using list comprehension\nprimes_comprehension = [num for num in range(2, limit + 1) if is_prime(num)]\nprint(f\"Using list comprehension: {primes_comprehension}\")",
+      "output": "Prime numbers up to 30: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]\nUsing list comprehension: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]",
+      "explanation": "This example defines a function is_prime() to check if a number is prime, then uses a for loop to find all prime numbers up to a given limit. It also shows how to use a list comprehension to do the same thing in a more concise way."
+    },
+    {
+      "title": "Processing a CSV-like String",
+      "description": "Parse and process data from a CSV-like string using loops.",
+      "code": "# Process CSV-like data with loops\n\n# Sample data (comma-separated values)\ncsv_data = \"\"\"\nName,Age,City\nAlice,25,New York\nBob,30,San Francisco\nCharlie,22,Los Angeles\nDana,28,Chicago\n\"\"\"\n\n# Process the data\nlines = csv_data.strip().split('\\n')\nheaders = lines[0].split(',')\n\n# Create a list of dictionaries (each representing a row)\ndata = []\nfor i in range(1, len(lines)):\n    values = lines[i].split(',')\n    row_dict = {}\n    for j in range(len(headers)):\n        row_dict[headers[j]] = values[j]\n    data.append(row_dict)\n\n# Display the processed data\nprint(\"Processed data:\")\nfor row in data:\n    print(row)\n\n# Calculate average age\ntotal_age = 0\nfor person in data:\n    total_age += int(person['Age'])\n\naverage_age = total_age / len(data) if data else 0\nprint(f\"\\nAverage age: {average_age:.1f}\")\n\n# Find people from a specific city\ncity_to_find = \"Los Angeles\"\nla_residents = [person['Name'] for person in data if person['City'] == city_to_find]\nprint(f\"\\nPeople from {city_to_find}: {la_residents}\")",
+      "output": "Processed data:\n{'Name': 'Alice', 'Age': '25', 'City': 'New York'}\n{'Name': 'Bob', 'Age': '30', 'City': 'San Francisco'}\n{'Name': 'Charlie', 'Age': '22', 'City': 'Los Angeles'}\n{'Name': 'Dana', 'Age': '28', 'City': 'Chicago'}\n\nAverage age: 26.2\n\nPeople from Los Angeles: ['Charlie']",
+      "explanation": "This example demonstrates how to process a CSV-like string. It splits the data into lines, extracts headers, and then uses loops to parse each row into a dictionary. It then performs calculations like finding the average age and filtering data based on city."
+    }
+  ],
+  "key_points": [
+    "For loops iterate over sequences (lists, tuples, strings) or other iterables, executing a block of code for each item.",
+    "The range() function generates a sequence of numbers and is commonly used with for loops.",
+    "While loops execute a block of code as long as a condition is true.",
+    "Loop control statements (break, continue, else) can alter the flow of loops.",
+    "Nested loops are used when you need to perform iterations within iterations.",
+    "List comprehensions provide a concise way to create lists based on existing sequences.",
+    "Dictionary and set comprehensions are similar to list comprehensions but create dictionaries and sets."
+  ],
+  "common_mistakes": [
+    "Creating infinite loops by forgetting to update the condition variable in while loops.",
+    "Off-by-one errors, such as forgetting that range(n) generates numbers from 0 to n-1, not including n.",
+    "Modifying a collection (like a list) while iterating over it, which can lead to unexpected behavior.",
+    "Using break/continue in nested loops only breaks/continues the innermost loop, not all loops.",
+    "Overusing list comprehensions for complex operations, making the code hard to read.",
+    "Forgetting that strings are immutable, so trying to modify them in a loop won't work."
+  ],
+  "additional_resources": [
+    {
+      "title": "Python Documentation - Control Flow",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html",
+      "description": "Official documentation on Python's control flow tools, including loops"
+    },
+    {
+      "title": "Python range() Function",
+      "url": "https://docs.python.org/3/library/functions.html#func-range",
+      "description": "Detailed information about the range function"
+    },
+    {
+      "title": "Python List Comprehension",
+      "url": "https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions",
+      "description": "Official guide on list comprehensions"
+    },
+    {
+      "title": "Python Break and Continue Statements",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops",
+      "description": "Documentation on loop control statements"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "loops_ex1",
+      "title": "Factorial Calculator",
+      "description": "Write a program that calculates the factorial of a given number n (n!). The factorial is the product of all positive integers less than or equal to n.",
+      "initial_code": "# Write your code here\n\n# Function to calculate the factorial of a number\ndef factorial(n):\n    # Your code here\n    pass\n\n# Test the function with different values\nn = 5\nresult = factorial(n)\nprint(f\"{n}! = {result}\")",
+      "test_code": "# Test code\nimport sys\nfrom io import StringIO\n\n# Capture stdout\nold_stdout = sys.stdout\nsys.stdout = mystdout = StringIO()\n\n# Re-run the user's code\nexec(sys.argv[0])\n\n# Restore stdout\nsys.stdout = old_stdout\n\n# Get the output\noutput = mystdout.getvalue()\n\n# Check if it contains the correct factorial value\nif \"5! = 120\" in output:\n    print(\"Test passed!\")\nelse:\n    raise ValueError(\"Your factorial function should calculate 5! as 120.\")",
+      "hints": [
+        "The factorial of a number n can be calculated as: n! = n × (n-1) × (n-2) × ... × 2 × 1",
+        "You can use either a for loop or a while loop to calculate the factorial.",
+        "Remember that 0! is defined as 1.",
+        "Be careful with edge cases: negative numbers don't have factorials, and large numbers can lead to overflow."
+      ]
+    },
+    {
+      "id": "loops_ex2",
+      "title": "FizzBuzz",
+      "description": "Write a program that prints the numbers from 1 to n. But for multiples of 3, print 'Fizz' instead of the number, for multiples of 5 print 'Buzz', and for multiples of both 3 and 5 print 'FizzBuzz'.",
+      "initial_code": "# Write your code here\n\ndef fizzbuzz(n):\n    # Your code here\n    pass\n\n# Test the function\nfizzbuzz(20)",
+      "test_code": "# Test code\nimport sys\nfrom io import StringIO\n\n# Capture stdout\nold_stdout = sys.stdout\nsys.stdout = mystdout = StringIO()\n\n# Re-run the user's code\nexec(sys.argv[0])\n\n# Restore stdout\nsys.stdout = old_stdout\n\n# Get the output\noutput = mystdout.getvalue().lower()\n\n# Check for key FizzBuzz patterns\ntest_passed = (\n    \"1\" in output and\n    \"2\" in output and\n    \"fizz\" in output and\n    \"buzz\" in output and\n    \"fizzbuzz\" in output\n)\n\nif test_passed:\n    print(\"Test passed!\")\nelse:\n    raise ValueError(\"Your fizzbuzz function should print numbers from 1 to n, 'Fizz' for multiples of 3, 'Buzz' for multiples of 5, and 'FizzBuzz' for multiples of both.\")",
+      "hints": [
+        "Use a for loop with range() to iterate from 1 to n.",
+        "Use the modulo operator (%) to check if a number is divisible by another number.",
+        "Check for multiples of both 3 and 5 first (numbers divisible by 15), then for multiples of 3, then for multiples of 5.",
+        "For all other numbers, just print the number itself."
+      ]
+    },
+    {
+      "id": "loops_ex3",
+      "title": "Pattern Printing",
+      "description": "Write a program that prints a star pattern pyramid of height n. For example, if n=4, it should print a pyramid with 4 rows.",
+      "initial_code": "# Write your code here\n\ndef print_pyramid(n):\n    # Your code here\n    pass\n\n# Test the function\nprint_pyramid(4)",
+      "test_code": "# Test code\nimport sys\nfrom io import StringIO\n\n# Capture stdout\nold_stdout = sys.stdout\nsys.stdout = mystdout = StringIO()\n\n# Re-run the user's code\nexec(sys.argv[0])\n\n# Restore stdout\nsys.stdout = old_stdout\n\n# Get the output\noutput = mystdout.getvalue()\n\n# Check for a proper pyramid pattern\nlines = output.strip().split('\\n')\nif len(lines) == 4 and all('*' in line for line in lines) and len(lines[0]) < len(lines[1]) < len(lines[2]) < len(lines[3]):\n    print(\"Test passed!\")\nelse:\n    raise ValueError(\"Your function should print a pyramid pattern with n rows, where each row has more stars than the previous one.\")",
+      "hints": [
+        "You'll need to use nested loops: an outer loop for the rows and an inner loop for the columns.",
+        "For a centered pyramid, you need to print spaces before the stars to align them properly.",
+        "For each row i (starting from 0), you can print (n-i-1) spaces followed by (2*i+1) stars.",
+        "You can use string multiplication to print multiple characters: ' ' * 3 prints 3 spaces, '*' * 5 prints 5 stars."
+      ]
+    }
+  ]
+}

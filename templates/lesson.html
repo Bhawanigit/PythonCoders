@@ -1,0 +1,240 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ lesson.title }} - Python Learning Platform{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="{{ url_for('home') }}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ lesson.title }}</li>
+        </ol>
+    </nav>
+    
+    <div>
+        {% if completed %}
+        <span class="badge bg-success me-2">
+            <i class="fas fa-check-circle me-1"></i> Completed
+        </span>
+        {% endif %}
+        
+        {% if current_user.is_authenticated and not completed %}
+        <form id="complete-form" method="POST" action="{{ url_for('mark_completed', lesson_id=lesson_id) }}" class="d-inline">
+            <button id="mark-complete-btn" type="button" class="btn btn-sm btn-outline-success">
+                <i class="fas fa-check me-1"></i> Mark as Completed
+            </button>
+        </form>
+        {% endif %}
+    </div>
+</div>
+
+<div class="card bg-dark-subtle mb-4">
+    <div class="card-body">
+        <h1 class="card-title display-6">{{ lesson.title }}</h1>
+        <p class="card-text lead">{{ lesson.description }}</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-3">
+        <div class="card bg-dark sticky-top" style="top: 20px; z-index: 100;">
+            <div class="card-header bg-dark-subtle">
+                <h5 class="mb-0"><i class="fas fa-list me-2"></i> Lesson Contents</h5>
+            </div>
+            <div class="card-body">
+                <nav class="nav flex-column">
+                    {% for section in lesson.sections %}
+                    <a class="nav-link" href="#section-{{ loop.index }}">
+                        {{ section.title }}
+                    </a>
+                    {% endfor %}
+                </nav>
+                
+                <hr>
+                
+                <div class="d-grid gap-2">
+                    <a href="{{ url_for('practice', lesson_id=lesson_id) }}" class="btn btn-primary">
+                        <i class="fas fa-code me-2"></i> Practice Exercises
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-9">
+        <div class="lesson-tabs mb-4">
+            <div class="lesson-tab active" data-target="lesson-content">
+                <i class="fas fa-book me-2"></i> Learn
+            </div>
+            <div class="lesson-tab" data-target="lesson-examples">
+                <i class="fas fa-code me-2"></i> Examples
+            </div>
+            <div class="lesson-tab" data-target="lesson-summary">
+                <i class="fas fa-list-check me-2"></i> Summary
+            </div>
+        </div>
+        
+        <div id="lesson-content" class="lesson-content">
+            {% for section in lesson.sections %}
+            <section id="section-{{ loop.index }}" class="mb-5">
+                <h2 class="mb-3">{{ section.title }}</h2>
+                
+                {% for content in section.content %}
+                {% if content.type == 'text' %}
+                <p>{{ content.value | safe }}</p>
+                
+                {% elif content.type == 'code' %}
+                <div class="code-block">
+                    <div class="code-header">
+                        <button class="btn btn-sm btn-outline-light" onclick="copyCode(this)">
+                            <i class="far fa-copy me-1"></i> Copy
+                        </button>
+                    </div>
+                    <div class="code-content">
+                        <pre>{{ content.value }}</pre>
+                    </div>
+                </div>
+                
+                {% elif content.type == 'note' %}
+                <div class="alert alert-info" role="alert">
+                    <i class="fas fa-info-circle me-2"></i> <strong>Note:</strong>
+                    {{ content.value | safe }}
+                </div>
+                
+                {% elif content.type == 'warning' %}
+                <div class="alert alert-warning" role="alert">
+                    <i class="fas fa-exclamation-triangle me-2"></i> <strong>Warning:</strong>
+                    {{ content.value | safe }}
+                </div>
+                
+                {% elif content.type == 'tip' %}
+                <div class="alert alert-success" role="alert">
+                    <i class="fas fa-lightbulb me-2"></i> <strong>Tip:</strong>
+                    {{ content.value | safe }}
+                </div>
+                {% endif %}
+                {% endfor %}
+            </section>
+            {% endfor %}
+        </div>
+        
+        <div id="lesson-examples" class="lesson-content" style="display: none;">
+            <h2 class="mb-4">Code Examples</h2>
+            
+            {% for example in lesson.examples %}
+            <div class="card bg-dark-subtle mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">{{ example.title }}</h5>
+                </div>
+                <div class="card-body">
+                    <p>{{ example.description }}</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <button class="btn btn-sm btn-outline-light" onclick="copyCode(this)">
+                                <i class="far fa-copy me-1"></i> Copy
+                            </button>
+                        </div>
+                        <div class="code-content">
+                            <pre>{{ example.code }}</pre>
+                        </div>
+                    </div>
+                    
+                    {% if example.output %}
+                    <div class="mt-3">
+                        <h6>Output:</h6>
+                        <div class="bg-dark p-3 rounded">
+                            <pre class="text-light mb-0">{{ example.output }}</pre>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if example.explanation %}
+                    <div class="mt-3">
+                        <h6>Explanation:</h6>
+                        <p>{{ example.explanation }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div id="lesson-summary" class="lesson-content" style="display: none;">
+            <h2 class="mb-4">Lesson Summary</h2>
+            
+            <div class="card bg-dark-subtle mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Key Points</h5>
+                    <ul class="mb-0">
+                        {% for point in lesson.key_points %}
+                        <li class="mb-2">{{ point }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            
+            {% if lesson.common_mistakes %}
+            <div class="card bg-dark-subtle mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0 text-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i> Common Mistakes to Avoid
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <ul class="mb-0">
+                        {% for mistake in lesson.common_mistakes %}
+                        <li class="mb-2">{{ mistake }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+            
+            <div class="card bg-dark-subtle">
+                <div class="card-header">
+                    <h5 class="mb-0 text-info">
+                        <i class="fas fa-lightbulb me-2"></i> Additional Resources
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <ul class="mb-0">
+                        {% for resource in lesson.additional_resources %}
+                        <li class="mb-2">
+                            <a href="{{ resource.url }}" target="_blank" class="text-info">
+                                {{ resource.title }}
+                            </a>
+                            {% if resource.description %}
+                            - {{ resource.description }}
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="lesson-nav mt-5">
+            {% if lesson.prev_lesson %}
+            <a href="{{ url_for('lesson', lesson_id=lesson.prev_lesson) }}" class="btn btn-outline-light">
+                <i class="fas fa-arrow-left me-2"></i> Previous Lesson
+            </a>
+            {% else %}
+            <div></div>
+            {% endif %}
+            
+            <a href="{{ url_for('practice', lesson_id=lesson_id) }}" class="btn btn-primary">
+                <i class="fas fa-code me-2"></i> Practice Exercises
+            </a>
+            
+            {% if lesson.next_lesson %}
+            <a href="{{ url_for('lesson', lesson_id=lesson.next_lesson) }}" class="btn btn-outline-light">
+                Next Lesson <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+            {% else %}
+            <div></div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

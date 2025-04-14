@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile - Python Learning Platform{% endblock %}
+
+{% block content %}
+<div class="profile-header">
+    <div class="d-flex align-items-center mb-4">
+        <div class="bg-dark rounded-circle p-3 me-4">
+            <i class="fas fa-user fa-2x text-info"></i>
+        </div>
+        <div>
+            <h1 class="display-6 mb-1">{{ user.username }}</h1>
+            <p class="text-muted mb-0">{{ user.email }}</p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-4 mb-4">
+        <div class="progress-overview h-100">
+            <h3 class="mb-4">Learning Progress</h3>
+            
+            <div class="mb-4 text-center">
+                <div class="position-relative d-inline-block">
+                    <svg width="150" height="150" viewBox="0 0 150 150">
+                        <circle cx="75" cy="75" r="65" fill="none" stroke="#2a2d3a" stroke-width="16"/>
+                        <circle cx="75" cy="75" r="65" fill="none" stroke="#0dcaf0" stroke-width="16" 
+                                stroke-dasharray="409" stroke-dashoffset="{{ 409 - (409 * progress_percentage / 100) }}"/>
+                    </svg>
+                    <div class="position-absolute top-50 start-50 translate-middle">
+                        <h3 class="mb-0">{{ progress_percentage|int }}%</h3>
+                        <p class="text-muted mb-0">Complete</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="d-flex justify-content-between mb-3">
+                <span>Lessons Completed</span>
+                <span class="text-info">{{ completed_lessons|length }}/{{ topics|length }}</span>
+            </div>
+            
+            <div class="progress mb-4" style="height: 10px;">
+                <div class="progress-bar bg-info" role="progressbar" style="width: {{ progress_percentage }}%"></div>
+            </div>
+            
+            <div class="text-center">
+                {% if progress_percentage < 100 %}
+                <a href="{{ url_for('home') }}" class="btn btn-primary">
+                    <i class="fas fa-book-open me-2"></i> Continue Learning
+                </a>
+                {% else %}
+                <div class="alert alert-success">
+                    <i class="fas fa-trophy me-2"></i> Congratulations! You've completed all lessons.
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-8">
+        <div class="card bg-dark-subtle">
+            <div class="card-header">
+                <h3 class="mb-0">Lesson Status</h3>
+            </div>
+            <div class="card-body">
+                <div class="list-group">
+                    {% for topic in topics %}
+                    <div class="list-group-item bg-dark-subtle d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="mb-1">{{ topic.title }}</h5>
+                            <div class="d-flex align-items-center">
+                                {% if topic.id in completed_lessons %}
+                                <span class="badge bg-success me-2">
+                                    <i class="fas fa-check"></i>
+                                </span>
+                                <small class="text-muted">Completed</small>
+                                {% else %}
+                                <span class="badge bg-secondary me-2">
+                                    <i class="fas fa-hourglass-half"></i>
+                                </span>
+                                <small class="text-muted">In Progress</small>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <a href="{{ url_for('lesson', lesson_id=topic.id) }}" class="btn btn-sm btn-outline-light">
+                            {% if topic.id in completed_lessons %}
+                            <i class="fas fa-redo me-1"></i> Review
+                            {% else %}
+                            <i class="fas fa-play me-1"></i> Continue
+                            {% endif %}
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="card bg-dark-subtle mt-4">
+            <div class="card-header">
+                <h3 class="mb-0">Account Information</h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-control" value="{{ user.username }}" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" value="{{ user.email }}" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Member Since</label>
+                    <input type="text" class="form-control" value="{{ user.created_at.strftime('%B %d, %Y') }}" readonly>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

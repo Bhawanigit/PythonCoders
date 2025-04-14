@@ -1,0 +1,264 @@
+{
+  "title": "Python Data Types",
+  "description": "Explore Python's built-in data types like strings, numbers, lists, and dictionaries",
+  "prev_lesson": "syntax",
+  "next_lesson": "loops",
+  "sections": [
+    {
+      "title": "Introduction to Python Data Types",
+      "content": [
+        {
+          "type": "text",
+          "value": "Python has several built-in data types that are used to define the operations possible on them and the storage method for each type. Understanding these data types is fundamental to working with Python effectively."
+        },
+        {
+          "type": "text",
+          "value": "Python's data types can be broadly classified into the following categories:"
+        },
+        {
+          "type": "text",
+          "value": "<ul><li><strong>Numeric Types</strong>: int, float, complex</li><li><strong>Sequence Types</strong>: list, tuple, range</li><li><strong>Text Type</strong>: str</li><li><strong>Mapping Type</strong>: dict</li><li><strong>Set Types</strong>: set, frozenset</li><li><strong>Boolean Type</strong>: bool</li><li><strong>None Type</strong>: None</li></ul>"
+        }
+      ]
+    },
+    {
+      "title": "Numeric Types",
+      "content": [
+        {
+          "type": "text",
+          "value": "Python supports three numeric types: integers, floating-point numbers, and complex numbers."
+        },
+        {
+          "type": "code",
+          "value": "# Integer (int) - whole numbers without a decimal point\nx = 10\nnegative_num = -5\nbig_num = 1234567890\n\n# Float - numbers with a decimal point\npi = 3.14159\ne = 2.71828\n\n# Scientific notation for large or small floats\nsmall_num = 3.14e-10  # 3.14 × 10^-10\nbig_num = 1.6e9       # 1.6 × 10^9\n\n# Complex numbers (complex) - numbers with a real and imaginary part\nz = 2 + 3j\n\n# Type conversion between numeric types\nint_num = 10\nfloat_num = float(int_num)  # 10.0\n\nfloat_num = 7.8\nint_num = int(float_num)    # 7 (truncates, not rounds)"
+        },
+        {
+          "type": "note",
+          "value": "Python integers have unlimited precision, meaning they can grow to use as much memory as needed to represent the integer."
+        }
+      ]
+    },
+    {
+      "title": "Strings",
+      "content": [
+        {
+          "type": "text",
+          "value": "Strings in Python are sequences of Unicode characters. They are immutable, which means they cannot be changed after they are created."
+        },
+        {
+          "type": "code",
+          "value": "# String creation\nsingle_quotes = 'Hello, World!'\ndouble_quotes = \"Hello, World!\"\n\n# Multi-line strings use triple quotes\nmulti_line = \"\"\"This is a\nmulti-line string\nthat spans multiple lines.\"\"\"\n\n# String concatenation\nfirst_name = \"John\"\nlast_name = \"Doe\"\nfull_name = first_name + \" \" + last_name  # \"John Doe\"\n\n# String repetition\nrepetition = \"abc\" * 3  # \"abcabcabc\"\n\n# String indexing and slicing\ns = \"Python\"\nfirst_char = s[0]      # 'P'\nlast_char = s[-1]     # 'n'\nsubstring = s[1:4]    # 'yth'\n\n# String methods\ns = \"hello, world!\"\nupper_s = s.upper()          # 'HELLO, WORLD!'\nlower_s = s.lower()          # 'hello, world!'\ncapitalized = s.capitalize()  # 'Hello, world!'\nreplaced = s.replace('world', 'Python')  # 'hello, Python!'\n\n# Check if substring exists\nif 'world' in s:\n    print(\"'world' found in the string\")\n\n# String length\nlength = len(s)  # 13"
+        },
+        {
+          "type": "tip",
+          "value": "In Python, strings are immutable. This means that methods like <code>replace()</code> don't modify the original string but return a new string with the changes."
+        }
+      ]
+    },
+    {
+      "title": "Lists",
+      "content": [
+        {
+          "type": "text",
+          "value": "Lists are one of the most versatile data structures in Python. They are ordered, mutable, and can contain elements of different types."
+        },
+        {
+          "type": "code",
+          "value": "# Creating lists\nempty_list = []\nnumbers = [1, 2, 3, 4, 5]\nmixed_list = [1, \"hello\", 3.14, True]\n\n# Nested lists\nmatrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\n\n# Accessing list elements\nfirst_element = numbers[0]  # 1\nlast_element = numbers[-1]  # 5\n\n# Slicing lists\nsublist = numbers[1:4]  # [2, 3, 4]\n\n# List methods\nnumbers.append(6)       # Add to the end: [1, 2, 3, 4, 5, 6]\nnumbers.insert(0, 0)    # Insert at index: [0, 1, 2, 3, 4, 5, 6]\nnumbers.remove(3)       # Remove first occurrence: [0, 1, 2, 4, 5, 6]\npopped = numbers.pop()  # Remove and return last item: 6, list becomes [0, 1, 2, 4, 5]\n\n# List concatenation\nlist1 = [1, 2, 3]\nlist2 = [4, 5, 6]\ncombined = list1 + list2  # [1, 2, 3, 4, 5, 6]\n\n# List comprehension - a powerful way to create lists\nsquares = [x**2 for x in range(10)]  # [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]\neven_squares = [x**2 for x in range(10) if x % 2 == 0]  # [0, 4, 16, 36, 64]\n\n# Sorting lists\nnumbers = [3, 1, 4, 1, 5, 9, 2]\nnumbers.sort()  # In-place sorting: [1, 1, 2, 3, 4, 5, 9]\n\n# Reversing a list\nnumbers.reverse()  # In-place reverse: [9, 5, 4, 3, 2, 1, 1]\n\n# Finding the length of a list\nlength = len(numbers)  # 7"
+        },
+        {
+          "type": "warning",
+          "value": "Be careful with modifying lists while iterating over them. This can lead to unexpected behavior because the indices shift as items are added or removed."
+        }
+      ]
+    },
+    {
+      "title": "Tuples",
+      "content": [
+        {
+          "type": "text",
+          "value": "Tuples are similar to lists but are immutable, meaning they cannot be modified after creation. They are commonly used to store collections of related data."
+        },
+        {
+          "type": "code",
+          "value": "# Creating tuples\nempty_tuple = ()\nsingle_item_tuple = (1,)  # Note the comma\ncoordinates = (10, 20)\nperson = (\"John\", 30, \"Engineer\")\n\n# Tuple packing and unpacking\ntuple_packing = 1, 2, 3  # This is also a tuple: (1, 2, 3)\nx, y, z = tuple_packing  # Unpacking: x=1, y=2, z=3\n\n# Accessing tuple elements (similar to lists)\nfirst = coordinates[0]  # 10\nlast = person[-1]      # 'Engineer'\n\n# Tuples are immutable\n# coordinates[0] = 30  # This would raise a TypeError\n\n# Tuple methods\ncount = (1, 2, 2, 3, 2).count(2)  # Count occurrences: 3\nindex = (1, 2, 3).index(2)        # Find index: 1\n\n# Converting between lists and tuples\ntuple_from_list = tuple([1, 2, 3])\nlist_from_tuple = list((4, 5, 6))"
+        },
+        {
+          "type": "tip",
+          "value": "Use tuples when you have a collection of values that shouldn't change during the program execution, such as days of the week or RGB color values."
+        }
+      ]
+    },
+    {
+      "title": "Dictionaries",
+      "content": [
+        {
+          "type": "text",
+          "value": "Dictionaries are unordered collections of key-value pairs. They are optimized for retrieving data when you know the key."
+        },
+        {
+          "type": "code",
+          "value": "# Creating dictionaries\nempty_dict = {}\nperson = {\n    \"name\": \"John Doe\",\n    \"age\": 30,\n    \"occupation\": \"Engineer\"\n}\n\n# Accessing dictionary values\nname = person[\"name\"]     # 'John Doe'\n\n# Using get() to provide a default value if key doesn't exist\nphone = person.get(\"phone\", \"Not Available\")  # 'Not Available'\n\n# Adding or updating items\nperson[\"phone\"] = \"555-1234\"  # Add new key-value pair\nperson[\"age\"] = 31           # Update existing value\n\n# Removing items\ndel person[\"occupation\"]     # Remove by key\nphone = person.pop(\"phone\")  # Remove and return value\n\n# Dictionary methods\nkeys = person.keys()      # Get a view of all keys\nvalues = person.values()  # Get a view of all values\nitems = person.items()    # Get a view of all key-value pairs\n\n# Iterating through a dictionary\nfor key in person:\n    print(key, person[key])\n\n# Dictionary comprehension\nsquares = {x: x**2 for x in range(6)}  # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25}\n\n# Checking if a key exists\nif \"name\" in person:\n    print(\"Name is\", person[\"name\"])\n\n# Nested dictionaries\nusers = {\n    \"user1\": {\n        \"name\": \"Alice\",\n        \"email\": \"alice@example.com\"\n    },\n    \"user2\": {\n        \"name\": \"Bob\",\n        \"email\": \"bob@example.com\"\n    }\n}\n\nbob_email = users[\"user2\"][\"email\"]  # 'bob@example.com'"
+        },
+        {
+          "type": "note",
+          "value": "In Python 3.7+, dictionaries maintain the insertion order of keys. However, you should not rely on this if your code needs to work with earlier versions of Python."
+        }
+      ]
+    },
+    {
+      "title": "Sets",
+      "content": [
+        {
+          "type": "text",
+          "value": "Sets are unordered collections of unique elements. They are useful for membership testing and eliminating duplicate entries."
+        },
+        {
+          "type": "code",
+          "value": "# Creating sets\nempty_set = set()  # Cannot use {} as it creates an empty dictionary\nfruits = {\"apple\", \"banana\", \"cherry\"}\nnumbers = {1, 2, 3, 4, 5}\n\n# Adding and removing elements\nfruits.add(\"orange\")     # Add a single element\nfruits.update([\"mango\", \"grapes\"])  # Add multiple elements\nfruits.remove(\"banana\")  # Remove element (raises KeyError if not found)\nfruits.discard(\"kiwi\")   # Remove if present (no error if not found)\n\n# Set operations\nset1 = {1, 2, 3, 4, 5}\nset2 = {4, 5, 6, 7, 8}\n\nunion = set1 | set2            # Union: {1, 2, 3, 4, 5, 6, 7, 8}\nintersection = set1 & set2     # Intersection: {4, 5}\ndifference = set1 - set2       # Difference: {1, 2, 3}\nsymmetric_diff = set1 ^ set2  # Symmetric difference: {1, 2, 3, 6, 7, 8}\n\n# Checking if a set is a subset or superset\nis_subset = {1, 2}.issubset(set1)     # True\nis_superset = set1.issuperset({1, 2})  # True\n\n# Frozen sets - immutable version of sets\nfrozen = frozenset([1, 2, 3])\n\n# Set comprehension\neven_numbers = {x for x in range(10) if x % 2 == 0}  # {0, 2, 4, 6, 8}"
+        },
+        {
+          "type": "tip",
+          "value": "Sets are particularly useful for removing duplicates from a list: <code>unique_items = list(set(items))</code>."
+        }
+      ]
+    },
+    {
+      "title": "Boolean and None Types",
+      "content": [
+        {
+          "type": "text",
+          "value": "Boolean values are either True or False. None is a special object that represents the absence of a value or a null value."
+        },
+        {
+          "type": "code",
+          "value": "# Boolean values\nis_active = True\nis_admin = False\n\n# Boolean operations\nresult1 = True and False  # False\nresult2 = True or False   # True\nresult3 = not True        # False\n\n# Comparison operators return boolean values\nx = 5\ny = 10\nless_than = x < y      # True\nequal = x == y         # False\nnot_equal = x != y     # True\ngreater_equal = x >= 5  # True\n\n# The None object\nvalue = None\n\n# Testing for None\nif value is None:\n    print(\"Value is None\")\n\n# Common use of None as a default parameter\ndef greet(name=None):\n    if name is None:\n        return \"Hello, Guest!\"\n    return f\"Hello, {name}!\"\n\n# Be careful with truthiness\n# These values evaluate to False in boolean context\nfalse_values = [False, None, 0, 0.0, '', [], {}, set()]\n\n# Everything else evaluates to True\nif \"Hello\":\n    print(\"Non-empty strings are True\")\n\nif [1, 2, 3]:\n    print(\"Non-empty lists are True\")"
+        },
+        {
+          "type": "warning",
+          "value": "Always use <code>is</code> or <code>is not</code> when comparing with <code>None</code>, not <code>==</code> or <code>!=</code>."
+        }
+      ]
+    },
+    {
+      "title": "Type Conversion",
+      "content": [
+        {
+          "type": "text",
+          "value": "Python provides several built-in functions for converting between different data types."
+        },
+        {
+          "type": "code",
+          "value": "# Converting to integers\nint_from_str = int(\"10\")      # 10\nint_from_float = int(10.8)     # 10 (truncates, not rounds)\n\n# Converting to float\nfloat_from_str = float(\"10.5\")  # 10.5\nfloat_from_int = float(10)      # 10.0\n\n# Converting to string\nstr_from_int = str(10)        # \"10\"\nstr_from_float = str(10.5)    # \"10.5\"\nstr_from_bool = str(True)     # \"True\"\n\n# Converting to boolean\nbool_from_int = bool(1)       # True (0 is False, everything else is True)\nbool_from_str = bool(\"Hello\")  # True (empty string is False)\nbool_from_list = bool([])     # False (empty list)\n\n# Converting to list, tuple, set\nlist_from_str = list(\"abc\")    # ['a', 'b', 'c']\ntuple_from_list = tuple([1, 2, 3])  # (1, 2, 3)\nset_from_list = set([1, 2, 2, 3])   # {1, 2, 3} (duplicates removed)\n\n# Converting to dictionary\ndict_from_tuples = dict([(\"a\", 1), (\"b\", 2)])  # {'a': 1, 'b': 2}"
+        },
+        {
+          "type": "note",
+          "value": "Type conversion can fail if the conversion is not possible. For example, <code>int('hello')</code> would raise a <code>ValueError</code>."
+        }
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "String Manipulation",
+      "description": "Example demonstrating various string operations.",
+      "code": "# String manipulation example\n\ntext = \"Python Programming\"\n\n# Basic operations\nprint(f\"Original string: {text}\")\nprint(f\"Length: {len(text)}\")\nprint(f\"Uppercase: {text.upper()}\")\nprint(f\"Lowercase: {text.lower()}\")\n\n# Substrings\nprint(f\"First 6 characters: {text[:6]}\")\nprint(f\"Last 11 characters: {text[-11:]}\")\n\n# Checking content\nprint(f\"Contains 'gram': {'gram' in text}\")\nprint(f\"Starts with 'Py': {text.startswith('Py')}\")\nprint(f\"Ends with 'ing': {text.endswith('ing')}\")\n\n# Splitting and joining\nwords = text.split()\nprint(f\"Split into words: {words}\")\njoined = \"-\".join(words)\nprint(f\"Joined with hyphens: {joined}\")\n\n# Replacing\nreplaced = text.replace(\"Programming\", \"Developer\")\nprint(f\"After replacement: {replaced}\")",
+      "output": "Original string: Python Programming\nLength: 19\nUppercase: PYTHON PROGRAMMING\nLowercase: python programming\nFirst 6 characters: Python\nLast 11 characters: Programming\nContains 'gram': True\nStarts with 'Py': True\nEnds with 'ing': True\nSplit into words: ['Python', 'Programming']\nJoined with hyphens: Python-Programming\nAfter replacement: Python Developer",
+      "explanation": "This example demonstrates various string operations including case conversion, slicing, content checking, splitting, joining, and replacing substrings."
+    },
+    {
+      "title": "Working with Lists",
+      "description": "Example showing common list operations.",
+      "code": "# List operations example\n\n# Create a list\nnumbers = [5, 2, 8, 1, 9, 3]\nprint(f\"Original list: {numbers}\")\n\n# Basic operations\nprint(f\"Length: {len(numbers)}\")\nprint(f\"Minimum: {min(numbers)}\")\nprint(f\"Maximum: {max(numbers)}\")\nprint(f\"Sum: {sum(numbers)}\")\n\n# List manipulation\nnumbers.append(7)\nprint(f\"After append(7): {numbers}\")\n\nnumbers.insert(2, 10)\nprint(f\"After insert(2, 10): {numbers}\")\n\nnumbers.remove(9)\nprint(f\"After remove(9): {numbers}\")\n\npopped = numbers.pop()\nprint(f\"Popped element: {popped}\")\nprint(f\"After pop(): {numbers}\")\n\n# Sorting\nnumbers.sort()\nprint(f\"After sort(): {numbers}\")\n\nnumbers.reverse()\nprint(f\"After reverse(): {numbers}\")\n\n# List operations\nnew_list = numbers + [11, 12]\nprint(f\"Concatenated list: {new_list}\")\n\nrepeated = [0] * 3\nprint(f\"Repeated list: {repeated}\")\n\n# List comprehension\nsquares = [x**2 for x in range(1, 6)]\nprint(f\"Squares using list comprehension: {squares}\")",
+      "output": "Original list: [5, 2, 8, 1, 9, 3]\nLength: 6\nMinimum: 1\nMaximum: 9\nSum: 28\nAfter append(7): [5, 2, 8, 1, 9, 3, 7]\nAfter insert(2, 10): [5, 2, 10, 8, 1, 9, 3, 7]\nAfter remove(9): [5, 2, 10, 8, 1, 3, 7]\nPopped element: 7\nAfter pop(): [5, 2, 10, 8, 1, 3]\nAfter sort(): [1, 2, 3, 5, 8, 10]\nAfter reverse(): [10, 8, 5, 3, 2, 1]\nConcatenated list: [10, 8, 5, 3, 2, 1, 11, 12]\nRepeated list: [0, 0, 0]\nSquares using list comprehension: [1, 4, 9, 16, 25]",
+      "explanation": "This example demonstrates common list operations including adding/removing elements, sorting, list concatenation, repetition, and list comprehension."
+    },
+    {
+      "title": "Dictionary Usage",
+      "description": "Example showing how to work with dictionaries.",
+      "code": "# Dictionary operations example\n\n# Create a dictionary\nstudent = {\n    \"name\": \"Alice\",\n    \"age\": 22,\n    \"major\": \"Computer Science\",\n    \"gpa\": 3.8\n}\n\nprint(f\"Student dictionary: {student}\")\n\n# Accessing values\nprint(f\"Name: {student['name']}\")\nprint(f\"Age: {student['age']}\")\n\n# Using get() with a default value\nphone = student.get(\"phone\", \"Not Available\")\nprint(f\"Phone: {phone}\")\n\n# Adding and updating values\nstudent[\"phone\"] = \"555-1234\"\nstudent[\"age\"] = 23\nprint(f\"Updated dictionary: {student}\")\n\n# Removing items\ndel student[\"gpa\"]\nprint(f\"After deleting GPA: {student}\")\n\nmajor = student.pop(\"major\")\nprint(f\"Popped major: {major}\")\nprint(f\"After popping major: {student}\")\n\n# Dictionary methods\nprint(f\"Keys: {list(student.keys())}\")\nprint(f\"Values: {list(student.values())}\")\nprint(f\"Items: {list(student.items())}\")\n\n# Iterating through a dictionary\nprint(\"\\nIterating through the dictionary:\")\nfor key, value in student.items():\n    print(f\"{key}: {value}\")\n\n# Dictionary comprehension\nsquares = {x: x**2 for x in range(1, 6)}\nprint(f\"\\nSquares dictionary: {squares}\")",
+      "output": "Student dictionary: {'name': 'Alice', 'age': 22, 'major': 'Computer Science', 'gpa': 3.8}\nName: Alice\nAge: 22\nPhone: Not Available\nUpdated dictionary: {'name': 'Alice', 'age': 23, 'major': 'Computer Science', 'gpa': 3.8, 'phone': '555-1234'}\nAfter deleting GPA: {'name': 'Alice', 'age': 23, 'major': 'Computer Science', 'phone': '555-1234'}\nPopped major: Computer Science\nAfter popping major: {'name': 'Alice', 'age': 23, 'phone': '555-1234'}\nKeys: ['name', 'age', 'phone']\nValues: ['Alice', 23, '555-1234']\nItems: [('name', 'Alice'), ('age', 23), ('phone', '555-1234')]\n\nIterating through the dictionary:\nname: Alice\nage: 23\nphone: 555-1234\n\nSquares dictionary: {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}",
+      "explanation": "This example demonstrates common dictionary operations including accessing values, adding/updating entries, removing entries, and iterating through a dictionary."
+    }
+  ],
+  "key_points": [
+    "Python has several built-in data types including numeric types (int, float, complex), sequences (list, tuple, range), strings, dictionaries, sets, and boolean values.",
+    "Lists are ordered, mutable collections that can contain items of different types.",
+    "Tuples are similar to lists but are immutable (cannot be changed after creation).",
+    "Dictionaries store key-value pairs and provide fast lookup by key.",
+    "Sets contain unique elements and are useful for eliminating duplicates and testing membership.",
+    "Strings in Python are immutable sequences of Unicode characters with powerful methods for manipulation.",
+    "Type conversion functions (int(), float(), str(), etc.) let you convert between different data types."
+  ],
+  "common_mistakes": [
+    "Trying to modify immutable types like strings, tuples, or frozen sets directly.",
+    "Forgetting that dictionary keys must be immutable (strings, numbers, tuples, but not lists or dictionaries).",
+    "Not handling potential errors during type conversion (e.g., converting non-numeric strings to int or float).",
+    "Confusing the behavior of is and == operators (is checks identity, == checks equality).",
+    "Modifying a collection (like a list or dictionary) while iterating over it.",
+    "Assuming dictionaries are ordered in older Python versions (they're only guaranteed to maintain insertion order since Python 3.7)."
+  ],
+  "additional_resources": [
+    {
+      "title": "Python Documentation - Built-in Types",
+      "url": "https://docs.python.org/3/library/stdtypes.html",
+      "description": "Official documentation on Python's built-in types"
+    },
+    {
+      "title": "Python String Methods",
+      "url": "https://docs.python.org/3/library/stdtypes.html#string-methods",
+      "description": "Complete reference for string methods"
+    },
+    {
+      "title": "Python Dictionary Methods",
+      "url": "https://docs.python.org/3/library/stdtypes.html#mapping-types-dict",
+      "description": "Complete reference for dictionary methods"
+    },
+    {
+      "title": "Python List Methods",
+      "url": "https://docs.python.org/3/tutorial/datastructures.html",
+      "description": "Tutorial on Python data structures including lists"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "data_types_ex1",
+      "title": "String Manipulation",
+      "description": "Write a program that asks the user for their full name, then displays their initials in uppercase.",
+      "initial_code": "# Write your code here\n\n# Get the user's full name\n\n# Extract and display the initials in uppercase",
+      "test_code": "# Test code\nimport sys\nfrom io import StringIO\n\n# Capture stdout\nold_stdout = sys.stdout\nsys.stdout = mystdout = StringIO()\n\n# Provide test input\nsys.stdin = StringIO(\"John Doe Smith\\n\")\n\n# Re-run the user's code\nexec(sys.argv[0])\n\n# Restore stdout\nsys.stdout = old_stdout\n\n# Get the output\noutput = mystdout.getvalue().strip()\n\n# Check if it contains the correct initials\nif \"JDS\" in output.upper():\n    print(\"Test passed!\")\nelse:\n    raise ValueError(\"Your program should extract the initials 'JDS' from 'John Doe Smith'.\")",
+      "hints": [
+        "You can use the split() method to split the full name into a list of names.",
+        "Use a loop to iterate through the list of names and extract the first character of each name.",
+        "Use the upper() method to convert the initials to uppercase."
+      ]
+    },
+    {
+      "id": "data_types_ex2",
+      "title": "List Operations",
+      "description": "Create a program that takes a list of numbers, then displays the sum, average, minimum, and maximum values.",
+      "initial_code": "# Write your code here\n\n# Create a list of numbers\nnumbers = [10, 5, 8, 20, 15, 3, 12]\n\n# Calculate and display the sum, average, minimum, and maximum",
+      "test_code": "# Test code\nimport sys\nfrom io import StringIO\n\n# Capture stdout\nold_stdout = sys.stdout\nsys.stdout = mystdout = StringIO()\n\n# Re-run the user's code\nexec(sys.argv[0])\n\n# Restore stdout\nsys.stdout = old_stdout\n\n# Get the output\noutput = mystdout.getvalue().lower()\n\n# Check if the output contains the correct values\ncorrect_values = [\n    \"73\", # sum\n    \"10.42\", # average (rounded)\n    \"3\", # min\n    \"20\" # max\n]\n\nall_found = all(value in output for value in correct_values)\n\nif all_found:\n    print(\"Test passed!\")\nelse:\n    raise ValueError(\"Your program should correctly calculate the sum (73), average (~10.42), minimum (3), and maximum (20) values.\")",
+      "hints": [
+        "Use the built-in sum() function to calculate the sum of the list.",
+        "To calculate the average, divide the sum by the length of the list (len(numbers)).",
+        "Use the built-in min() and max() functions to find the minimum and maximum values.",
+        "Format your output to display the values clearly, with appropriate labels."
+      ]
+    },
+    {
+      "id": "data_types_ex3",
+      "title": "Dictionary for Contact Management",
+      "description": "Create a simple contact management program using a dictionary. Allow the user to add, view, and delete contacts.",
+      "initial_code": "# Write your code here\n\n# Initialize an empty contacts dictionary\ncontacts = {}\n\ndef add_contact():\n    # Add a new contact to the dictionary\n    pass\n\ndef view_contact():\n    # View a contact by name\n    pass\n\ndef list_contacts():\n    # List all contacts\n    pass\n\ndef delete_contact():\n    # Delete a contact by name\n    pass\n\n# Main program loop\nwhile True:\n    print(\"\\nContact Manager\")\n    print(\"1. Add Contact\")\n    print(\"2. View Contact\")\n    print(\"3. List All Contacts\")\n    print(\"4. Delete Contact\")\n    print(\"5. Exit\")\n    \n    choice = input(\"\\nEnter your choice (1-5): \")\n    \n    if choice == \"1\":\n        add_contact()\n    elif choice == \"2\":\n        view_contact()\n    elif choice == \"3\":\n        list_contacts()\n    elif choice == \"4\":\n        delete_contact()\n    elif choice == \"5\":\n        print(\"Goodbye!\")\n        break\n    else:\n        print(\"Invalid choice. Please try again.\")",
+      "test_code": "# Test code\nimport sys\nfrom io import StringIO\n\n# Capture stdout\nold_stdout = sys.stdout\nsys.stdout = mystdout = StringIO()\n\n# Provide test inputs to add, view, and delete contacts\ntest_input = \"1\\nAlice\\n555-1234\\nalice@example.com\\n3\\n2\\nAlice\\n4\\nAlice\\n3\\n5\\n\"\nsys.stdin = StringIO(test_input)\n\n# Re-run the user's code\ntry:\n    exec(sys.argv[0])\nexcept EOFError:\n    pass  # Expected due to limited test input\n\n# Restore stdout\nsys.stdout = old_stdout\n\n# Get the output\noutput = mystdout.getvalue()\n\n# Check if the contact manager performs the basic operations correctly\ntest_passed = (\n    \"Contact added successfully\" in output or \"added\" in output.lower() and\n    \"Alice\" in output and \"555-1234\" in output and\n    \"deleted\" in output.lower() or \"removed\" in output.lower()\n)\n\nif test_passed:\n    print(\"Test passed!\")\nelse:\n    raise ValueError(\"Your contact manager should allow adding, viewing, listing, and deleting contacts.\")",
+      "hints": [
+        "For each contact, store the name as the key and a dictionary of details (phone, email, etc.) as the value.",
+        "In the add_contact() function, prompt the user for the contact name, phone number, and email.",
+        "In the view_contact() function, ask for a name, then display the contact's details if found.",
+        "In the list_contacts() function, loop through the contacts dictionary and display each contact.",
+        "In the delete_contact() function, ask for a name, then remove that entry from the dictionary if found."
+      ]
+    }
+  ]
+}

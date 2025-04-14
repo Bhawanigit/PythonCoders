@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+
+{% block title %}Practice: {{ lesson.title }} - Python Learning Platform{% endblock %}
+
+{% block extra_css %}
+<style>
+    .exercise-nav {
+        display: flex;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid var(--bs-gray-700);
+    }
+    
+    .exercise-nav-item {
+        padding: 0.5rem 1rem;
+        margin-right: 0.5rem;
+        border-radius: 5px;
+        cursor: pointer;
+        white-space: nowrap;
+    }
+    
+    .exercise-nav-item.active {
+        background-color: var(--bs-primary);
+        color: white;
+    }
+    
+    .exercise-container {
+        display: none;
+    }
+    
+    .exercise-container.active {
+        display: block;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="{{ url_for('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ url_for('lesson', lesson_id=lesson_id) }}">{{ lesson.title }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Practice</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="card bg-dark-subtle mb-4">
+    <div class="card-body">
+        <h1 class="card-title display-6">Practice: {{ lesson.title }}</h1>
+        <p class="card-text lead">Apply what you've learned with these hands-on coding exercises.</p>
+    </div>
+</div>
+
+{% if lesson.exercises %}
+<div class="exercise-nav">
+    {% for exercise in lesson.exercises %}
+    <div class="exercise-nav-item {% if loop.first %}active{% endif %}" data-exercise="{{ exercise.id }}">
+        <i class="fas fa-code me-2"></i> Exercise {{ loop.index }}
+    </div>
+    {% endfor %}
+</div>
+
+{% for exercise in lesson.exercises %}
+<div id="exercise-{{ exercise.id }}" class="exercise-container {% if loop.first %}active{% endif %}">
+    <div class="card bg-dark-subtle mb-4">
+        <div class="card-header">
+            <h3 class="mb-0">{{ exercise.title }}</h3>
+        </div>
+        <div class="card-body">
+            <p>{{ exercise.description }}</p>
+            
+            {% if exercise.hints %}
+            <div class="accordion mb-3" id="hintsAccordion{{ loop.index }}">
+                <div class="accordion-item bg-dark border-0">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#hints{{ loop.index }}">
+                            <i class="fas fa-lightbulb me-2"></i> Hints
+                        </button>
+                    </h2>
+                    <div id="hints{{ loop.index }}" class="accordion-collapse collapse" data-bs-parent="#hintsAccordion{{ loop.index }}">
+                        <div class="accordion-body">
+                            <ol class="mb-0">
+                                {% for hint in exercise.hints %}
+                                <li class="mb-2">{{ hint }}</li>
+                                {% endfor %}
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            
+            <div class="mb-3">
+                <label for="code-editor" class="form-label">Your Code:</label>
+                <input type="hidden" id="lesson-id" value="{{ lesson_id }}">
+                <input type="hidden" id="exercise-id" value="{{ exercise.id }}">
+                <input type="hidden" id="starting-code" value="{{ exercise.initial_code }}">
+                <textarea id="code-editor" class="form-control">{{ exercise.initial_code }}</textarea>
+            </div>
+            
+            <div class="mb-3 d-flex flex-wrap gap-2">
+                <button id="run-code" class="btn btn-success">
+                    <i class="fas fa-play me-2"></i> Run Code
+                </button>
+                <button id="verify-exercise" class="btn btn-primary">
+                    <i class="fas fa-check-circle me-2"></i> Verify Solution
+                </button>
+                <button id="reset-code" class="btn btn-outline-light">
+                    <i class="fas fa-undo me-2"></i> Reset
+                </button>
+                
+                <!-- This button is initially hidden and appears after exercise is completed -->
+                <button id="next-exercise-btn" class="btn btn-info d-none">
+                    <i class="fas fa-arrow-right me-2"></i> Next Exercise
+                </button>
+            </div>
+            
+            <div id="code-output" class="mt-4">
+                <div class="text-muted">Run your code to see the output here.</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% else %}
+<div class="alert alert-warning">
+    <i class="fas fa-exclamation-triangle me-2"></i> No practice exercises available for this lesson yet.
+</div>
+{% endif %}
+
+<div class="mt-4 text-center">
+    <a href="{{ url_for('lesson', lesson_id=lesson_id) }}" class="btn btn-outline-light me-3">
+        <i class="fas fa-arrow-left me-2"></i> Back to Lesson
+    </a>
+    
+    {% if lesson.next_lesson %}
+    <a href="{{ url_for('lesson', lesson_id=lesson.next_lesson) }}" class="btn btn-primary">
+        Next Lesson <i class="fas fa-arrow-right ms-2"></i>
+    </a>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/code_editor.js') }}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Exercise navigation
+        const exerciseNavItems = document.querySelectorAll('.exercise-nav-item');
+        const exerciseContainers = document.querySelectorAll('.exercise-container');
+        
+        exerciseNavItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const exerciseId = this.getAttribute('data-exercise');
+                
+                // Update active navigation item
+                exerciseNavItems.forEach(navItem => {
+                    navItem.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // Show selected exercise
+                exerciseContainers.forEach(container => {
+                    container.classList.remove('active');
+                });
+                document.getElementById(`exercise-${exerciseId}`).classList.add('active');
+            });
+        });
+        
+        // Next exercise button
+        const nextExerciseBtn = document.getElementById('next-exercise-btn');
+        if (nextExerciseBtn) {
+            nextExerciseBtn.addEventListener('click', function() {
+                // Find the active navigation item
+                const activeNav = document.querySelector('.exercise-nav-item.active');
+                // Get the next sibling
+                const nextNav = activeNav.nextElementSibling;
+                
+                if (nextNav && nextNav.classList.contains('exercise-nav-item')) {
+                    nextNav.click();
+                    this.classList.add('d-none');
+                }
+            });
+        }
+    });
+</script>
+{% endblock %}
