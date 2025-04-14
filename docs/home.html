@@ -3,82 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Learning Platform - Home</title>
+    <title>Python Learning Platform by Bhawani</title>
+    <meta name="description" content="An interactive platform to learn Python programming from basics to advanced concepts with hands-on exercises and code practice.">
+    <link rel="icon" href="https://www.python.org/static/favicon.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #306998;
+            --secondary-color: #FFD43B;
+            --dark-blue: #1A4B77;
+            --light-bg: #f8f9fa;
+            --dark-bg: #212529;
+            --text-light: #f8f9fa;
+        }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #f8f9fa;
+            background-color: var(--light-bg);
+            scroll-behavior: smooth;
         }
+        
         .hero {
-            background-color: #343a40;
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-color) 100%);
             color: white;
             padding: 100px 0;
             margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
+        
         .feature-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
-            color: #0d6efd;
+            color: var(--primary-color);
         }
+        
         .feature-card {
             border: none;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
             height: 100%;
         }
+        
         .feature-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
+        
         .cta-section {
-            background-color: #e9ecef;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
             padding: 80px 0;
             margin: 60px 0;
+            border-top: 4px solid var(--secondary-color);
+            border-bottom: 4px solid var(--secondary-color);
         }
+        
         .topic-card {
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             height: 100%;
+            border-top: 4px solid var(--primary-color);
         }
+        
         .topic-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
+        
         .code-block {
             position: relative;
-            border-radius: 6px;
+            border-radius: 8px;
             margin: 1.5rem 0;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
+        
         .code-header {
             display: flex;
-            justify-content: flex-end;
-            padding: 0.5rem 1rem;
-            background-color: #212529;
-            border-top-left-radius: 6px;
-            border-top-right-radius: 6px;
-            border-bottom: 1px solid #343a40;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            background-color: #2c3e50;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            border-bottom: 1px solid #34495e;
         }
+        
+        .code-language {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
         .code-content {
-            padding: 1rem;
-            background-color: #212529;
-            border-bottom-left-radius: 6px;
-            border-bottom-right-radius: 6px;
+            padding: 1.25rem;
+            background-color: var(--dark-bg);
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
             overflow-x: auto;
         }
+        
         .code-content pre {
             margin: 0;
-            color: #f8f9fa;
+            color: var(--text-light);
             font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .comment { color: #6A9955; }
+        .string { color: #CE9178; }
+        .function { color: #DCDCAA; }
+        .keyword { color: #569CD6; }
+        .variable { color: #9CDCFE; }
+        .number { color: #B5CEA8; }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--dark-blue);
+            border-color: var(--dark-blue);
+        }
+        
+        .navbar-brand .python-logo {
+            color: var(--secondary-color);
+        }
+        
+        .py-badge {
+            background-color: var(--secondary-color);
+            color: var(--dark-blue);
+            font-weight: bold;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            margin-left: 0.5rem;
+            font-size: 0.8rem;
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .testimonial-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--secondary-color);
+        }
+        
+        .stats-item {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#">
-                <i class="fab fa-python me-2 fs-3 text-info"></i>
+                <i class="fab fa-python me-2 fs-3 python-logo"></i>
                 <span>Python Learning Platform</span>
+                <span class="py-badge">v1.0</span>
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -94,7 +209,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#topics">
-                            <i class="fas fa-book me-1"></i> Topics
+                            <i class="fas fa-book me-1"></i> Learning Path
                         </a>
                     </li>
                     <li class="nav-item">
@@ -103,7 +218,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/bhawanigit/PythonCoders">
+                        <a class="nav-link" href="#testimonials">
+                            <i class="fas fa-comment me-1"></i> Testimonials
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/bhawanigit/PythonCoders" target="_blank">
                             <i class="fab fa-github me-1"></i> GitHub
                         </a>
                     </li>
@@ -117,15 +237,23 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <h1 class="display-4 fw-bold mb-4">Learn Python Programming with Bhawani</h1>
-                    <p class="lead mb-4">Master the fundamentals of Python programming with our interactive lessons and hands-on exercises designed for beginners.</p>
+                    <p class="lead mb-4">Master the fundamentals of Python programming with our interactive lessons and hands-on exercises designed for beginners to intermediate learners.</p>
                     
                     <div class="d-grid gap-2 d-md-flex mb-4">
-                        <a href="#topics" class="btn btn-primary me-md-2">
-                            <i class="fas fa-book-open me-2"></i> Explore Topics
+                        <a href="#topics" class="btn btn-primary btn-lg me-md-2">
+                            <i class="fas fa-book-open me-2"></i> Start Learning
                         </a>
-                        <a href="https://github.com/bhawanigit/PythonCoders" class="btn btn-outline-light">
-                            <i class="fab fa-github me-2"></i> View Code
+                        <a href="https://github.com/bhawanigit/PythonCoders" class="btn btn-outline-light btn-lg" target="_blank">
+                            <i class="fab fa-github me-2"></i> View Source Code
                         </a>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <span class="badge bg-light text-dark me-2 mb-2">Web Development</span>
+                        <span class="badge bg-light text-dark me-2 mb-2">Data Science</span>
+                        <span class="badge bg-light text-dark me-2 mb-2">Machine Learning</span>
+                        <span class="badge bg-light text-dark me-2 mb-2">Automation</span>
+                        <span class="badge bg-light text-dark me-2 mb-2">Game Development</span>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -133,28 +261,28 @@
                         <div class="card-body p-4">
                             <div class="code-block">
                                 <div class="code-header">
+                                    <div class="code-language">python</div>
                                     <button class="btn btn-sm btn-outline-light" onclick="copyCode(this)">
                                         <i class="far fa-copy me-1"></i> Copy
                                     </button>
                                 </div>
                                 <div class="code-content">
-<pre>
-# Your first Python program
-print("Hello, World!")
+<pre><span class="comment"># Welcome to Python Learning Platform!</span>
+<span class="keyword">def</span> <span class="function">start_learning</span>():
+    <span class="string">"""Begin your Python journey with us"""</span>
+    skills = [<span class="string">"Syntax"</span>, <span class="string">"Data Types"</span>, <span class="string">"Loops"</span>, <span class="string">"Functions"</span>]
+    progress = <span class="number">0</span>
+    
+    <span class="keyword">for</span> skill <span class="keyword">in</span> skills:
+        <span class="function">learn</span>(skill)
+        progress += <span class="number">25</span>
+        <span class="function">print</span>(<span class="string">f"Progress: {progress}%"</span>)
+    
+    <span class="keyword">return</span> <span class="string">"Congratulations! You've learned Python basics!"</span>
 
-# Variables and data types
-name = "Python Learner"
-age = 2023 - 1991  # Python was created in 1991
-is_fun = True
-
-# A simple greeting function
-def greet(user_name):
-    return f"Welcome to Python, {user_name}!"
-
-# Call the function
-message = greet(name)
-print(message)
-</pre>
+<span class="comment"># Let's get started!</span>
+result = <span class="function">start_learning</span>()
+<span class="function">print</span>(result)</pre>
                                 </div>
                             </div>
                         </div>
@@ -164,19 +292,43 @@ print(message)
         </div>
     </section>
 
+    <section class="container py-5">
+        <div class="row text-center mb-5">
+            <div class="col-md-3 stats-item">
+                <div class="stats-number">4+</div>
+                <div class="stats-label">Core Topics</div>
+            </div>
+            <div class="col-md-3 stats-item">
+                <div class="stats-number">20+</div>
+                <div class="stats-label">Interactive Exercises</div>
+            </div>
+            <div class="col-md-3 stats-item">
+                <div class="stats-number">100%</div>
+                <div class="stats-label">Hands-on Learning</div>
+            </div>
+            <div class="col-md-3 stats-item">
+                <div class="stats-number">24/7</div>
+                <div class="stats-label">Practice Anytime</div>
+            </div>
+        </div>
+    </section>
+
     <section class="container py-5" id="topics">
-        <h2 class="text-center mb-5">Learn Python Step-by-Step</h2>
+        <h2 class="section-title">Your Python Learning Path</h2>
         <div class="row g-4">
             <div class="col-md-6 col-lg-3 mb-4">
                 <div class="card topic-card h-100 shadow-sm">
                     <div class="card-body">
-                        <h5 class="card-title">Python Syntax</h5>
-                        <p class="card-text">Learn the basic syntax of Python programming language.</p>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title mb-0">Python Syntax</h5>
+                            <span class="badge bg-primary">Level 1</span>
+                        </div>
+                        <p class="card-text">Master the fundamental rules and structure of Python code.</p>
                         <ul class="list-unstyled">
-                            <li><i class="fas fa-check-circle text-success me-2"></i> Indentation</li>
-                            <li><i class="fas fa-check-circle text-success me-2"></i> Comments</li>
-                            <li><i class="fas fa-check-circle text-success me-2"></i> Variables</li>
-                            <li><i class="fas fa-check-circle text-success me-2"></i> Print Function</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Indentation & Structure</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Comments & Documentation</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Variables & Assignment</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Input & Output</li>
                         </ul>
                     </div>
                     <div class="card-footer bg-transparent border-top-0">
@@ -187,12 +339,15 @@ print(message)
             <div class="col-md-6 col-lg-3 mb-4">
                 <div class="card topic-card h-100 shadow-sm">
                     <div class="card-body">
-                        <h5 class="card-title">Data Types</h5>
-                        <p class="card-text">Explore Python's built-in data types like strings, numbers, lists, and dictionaries.</p>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title mb-0">Data Types</h5>
+                            <span class="badge bg-primary">Level 2</span>
+                        </div>
+                        <p class="card-text">Work with Python's versatile built-in data structures.</p>
                         <ul class="list-unstyled">
                             <li><i class="fas fa-check-circle text-success me-2"></i> Numbers & Strings</li>
                             <li><i class="fas fa-check-circle text-success me-2"></i> Lists & Tuples</li>
-                            <li><i class="fas fa-check-circle text-success me-2"></i> Dictionaries</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Dictionaries & Sets</li>
                             <li><i class="fas fa-check-circle text-success me-2"></i> Type Conversion</li>
                         </ul>
                     </div>
@@ -204,13 +359,16 @@ print(message)
             <div class="col-md-6 col-lg-3 mb-4">
                 <div class="card topic-card h-100 shadow-sm">
                     <div class="card-body">
-                        <h5 class="card-title">Loops</h5>
-                        <p class="card-text">Master the art of repetition with for and while loops.</p>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title mb-0">Loops & Control</h5>
+                            <span class="badge bg-primary">Level 3</span>
+                        </div>
+                        <p class="card-text">Control program flow and iterate through data efficiently.</p>
                         <ul class="list-unstyled">
                             <li><i class="fas fa-check-circle text-success me-2"></i> For Loops</li>
                             <li><i class="fas fa-check-circle text-success me-2"></i> While Loops</li>
-                            <li><i class="fas fa-check-circle text-success me-2"></i> Loop Control</li>
-                            <li><i class="fas fa-check-circle text-success me-2"></i> Comprehensions</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Conditional Statements</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> List Comprehensions</li>
                         </ul>
                     </div>
                     <div class="card-footer bg-transparent border-top-0">
@@ -221,10 +379,13 @@ print(message)
             <div class="col-md-6 col-lg-3 mb-4">
                 <div class="card topic-card h-100 shadow-sm">
                     <div class="card-body">
-                        <h5 class="card-title">Functions</h5>
-                        <p class="card-text">Learn how to create reusable blocks of code with functions.</p>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title mb-0">Functions</h5>
+                            <span class="badge bg-primary">Level 4</span>
+                        </div>
+                        <p class="card-text">Create reusable blocks of code to organize your programs.</p>
                         <ul class="list-unstyled">
-                            <li><i class="fas fa-check-circle text-success me-2"></i> Defining Functions</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Function Basics</li>
                             <li><i class="fas fa-check-circle text-success me-2"></i> Parameters & Arguments</li>
                             <li><i class="fas fa-check-circle text-success me-2"></i> Return Values</li>
                             <li><i class="fas fa-check-circle text-success me-2"></i> Lambda Functions</li>
@@ -240,16 +401,16 @@ print(message)
 
     <section class="bg-light py-5" id="features">
         <div class="container">
-            <h2 class="text-center mb-5">Why Learn With Us?</h2>
+            <h2 class="section-title">Platform Features</h2>
             <div class="row g-4">
                 <div class="col-md-4">
                     <div class="card feature-card shadow-sm">
                         <div class="card-body text-center p-4">
                             <div class="feature-icon">
-                                <i class="fas fa-code text-primary"></i>
+                                <i class="fas fa-code"></i>
                             </div>
                             <h4 class="card-title">Interactive Code Editor</h4>
-                            <p class="card-text">Practice Python directly in your browser with our built-in code editor. Get instant feedback and see your code in action.</p>
+                            <p class="card-text">Practice Python directly in your browser with our built-in code editor. Get instant feedback, syntax highlighting, and see your code in action without any setup.</p>
                         </div>
                     </div>
                 </div>
@@ -257,10 +418,10 @@ print(message)
                     <div class="card feature-card shadow-sm">
                         <div class="card-body text-center p-4">
                             <div class="feature-icon">
-                                <i class="fas fa-tasks text-primary"></i>
+                                <i class="fas fa-chart-line"></i>
                             </div>
                             <h4 class="card-title">Progress Tracking</h4>
-                            <p class="card-text">Track your learning journey with our progress system. Mark lessons as completed and see your progress over time.</p>
+                            <p class="card-text">Monitor your learning journey with our comprehensive progress system. Mark lessons as completed, earn achievements, and visualize your growth as a Python developer.</p>
                         </div>
                     </div>
                 </div>
@@ -268,10 +429,127 @@ print(message)
                     <div class="card feature-card shadow-sm">
                         <div class="card-body text-center p-4">
                             <div class="feature-icon">
-                                <i class="fas fa-puzzle-piece text-primary"></i>
+                                <i class="fas fa-puzzle-piece"></i>
                             </div>
                             <h4 class="card-title">Practice Exercises</h4>
-                            <p class="card-text">Reinforce your learning with hands-on exercises and challenges that test your understanding of Python concepts.</p>
+                            <p class="card-text">Reinforce your learning with hands-on exercises and challenges that test your understanding of Python concepts. Solve real-world problems and build your confidence.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row g-4 mt-4">
+                <div class="col-md-4">
+                    <div class="card feature-card shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon">
+                                <i class="fas fa-user-shield"></i>
+                            </div>
+                            <h4 class="card-title">User Accounts</h4>
+                            <p class="card-text">Create your personal account to save your progress, bookmark favorite lessons, and continue learning from where you left off on any device.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h4 class="card-title">Responsive Design</h4>
+                            <p class="card-text">Access your learning materials from any device - desktop, tablet, or mobile. Our responsive design ensures a seamless experience across all screen sizes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h4 class="card-title">PostgreSQL Database</h4>
+                            <p class="card-text">Built with a robust PostgreSQL database backend that securely stores your progress, account information, and learning achievements.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container py-5" id="testimonials">
+        <h2 class="section-title">What Learners Say</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card testimonial-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="testimonial-img me-3">
+                            <div>
+                                <h5 class="mb-0">Alex Johnson</h5>
+                                <small class="text-muted">Web Developer</small>
+                            </div>
+                        </div>
+                        <p class="card-text">
+                            <i class="fas fa-quote-left text-muted me-2"></i>
+                            This platform made learning Python so much easier than I expected. The interactive exercises helped me practice concepts immediately after learning them.
+                            <i class="fas fa-quote-right text-muted ms-2"></i>
+                        </p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card testimonial-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" class="testimonial-img me-3">
+                            <div>
+                                <h5 class="mb-0">Sarah Chen</h5>
+                                <small class="text-muted">Data Scientist</small>
+                            </div>
+                        </div>
+                        <p class="card-text">
+                            <i class="fas fa-quote-left text-muted me-2"></i>
+                            The step-by-step approach and clear explanations were exactly what I needed. I went from zero Python knowledge to writing my own data analysis scripts in just a few weeks!
+                            <i class="fas fa-quote-right text-muted ms-2"></i>
+                        </p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card testimonial-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="User" class="testimonial-img me-3">
+                            <div>
+                                <h5 class="mb-0">Michael Torres</h5>
+                                <small class="text-muted">College Student</small>
+                            </div>
+                        </div>
+                        <p class="card-text">
+                            <i class="fas fa-quote-left text-muted me-2"></i>
+                            As a complete beginner, I was worried programming would be too difficult. This platform breaks everything down into easy-to-understand lessons that build your confidence gradually.
+                            <i class="fas fa-quote-right text-muted ms-2"></i>
+                        </p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
                     </div>
                 </div>
@@ -281,39 +559,62 @@ print(message)
 
     <section class="cta-section">
         <div class="container text-center">
-            <h2 class="mb-4">Ready to start learning Python?</h2>
-            <p class="lead mb-4">Explore our interactive lessons or check out the project on GitHub.</p>
-            <a href="#topics" class="btn btn-primary btn-lg me-3">Start Learning</a>
-            <a href="https://github.com/bhawanigit/PythonCoders" class="btn btn-dark btn-lg">View on GitHub</a>
+            <h2 class="mb-4">Ready to Master Python Programming?</h2>
+            <p class="lead mb-4">Join thousands of learners who have successfully learned Python with our platform. Start your coding journey today!</p>
+            <a href="#topics" class="btn btn-primary btn-lg me-3 px-4 py-2">
+                <i class="fas fa-rocket me-2"></i> Begin Learning
+            </a>
+            <a href="https://github.com/bhawanigit/PythonCoders" class="btn btn-dark btn-lg px-4 py-2" target="_blank">
+                <i class="fab fa-github me-2"></i> Explore Code
+            </a>
         </div>
     </section>
 
     <footer class="bg-dark text-light py-4">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <h5>Python Learning Platform</h5>
-                    <p class="text-muted">Learn Python programming from the basics to advanced concepts.</p>
+                <div class="col-md-5">
+                    <h5><i class="fab fa-python me-2 python-logo"></i> Python Learning Platform</h5>
+                    <p class="text-muted">An interactive web application for learning Python programming from basics to advanced concepts, built with Flask and PostgreSQL.</p>
+                    <div class="mt-3">
+                        <a href="https://github.com/bhawanigit" class="text-light me-3" target="_blank"><i class="fab fa-github fa-lg"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="#" class="text-light"><i class="fas fa-envelope fa-lg"></i></a>
+                    </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 mt-4 mt-md-0">
                     <h5>Resources</h5>
                     <ul class="list-unstyled">
-                        <li><a href="https://docs.python.org/3/" target="_blank" class="text-decoration-none text-muted">Python Documentation</a></li>
-                        <li><a href="https://www.python.org/" target="_blank" class="text-decoration-none text-muted">Python.org</a></li>
-                        <li><a href="https://pypi.org/" target="_blank" class="text-decoration-none text-muted">PyPI</a></li>
+                        <li><a href="https://docs.python.org/3/" target="_blank" class="text-decoration-none text-muted"><i class="fas fa-external-link-alt me-2"></i>Python Documentation</a></li>
+                        <li><a href="https://www.python.org/" target="_blank" class="text-decoration-none text-muted"><i class="fas fa-external-link-alt me-2"></i>Python.org</a></li>
+                        <li><a href="https://pypi.org/" target="_blank" class="text-decoration-none text-muted"><i class="fas fa-external-link-alt me-2"></i>PyPI</a></li>
+                        <li><a href="https://realpython.com/" target="_blank" class="text-decoration-none text-muted"><i class="fas fa-external-link-alt me-2"></i>Real Python</a></li>
                     </ul>
                 </div>
-                <div class="col-md-3">
-                    <h5>Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="home.html" class="text-decoration-none text-muted">Home</a></li>
-                        <li><a href="#topics" class="text-decoration-none text-muted">Topics</a></li>
-                        <li><a href="#features" class="text-decoration-none text-muted">Features</a></li>
-                        <li><a href="https://github.com/bhawanigit/PythonCoders" class="text-decoration-none text-muted">GitHub</a></li>
-                    </ul>
+                <div class="col-md-4 mt-4 mt-md-0">
+                    <h5>Quick Links</h5>
+                    <div class="row">
+                        <div class="col-6">
+                            <ul class="list-unstyled">
+                                <li><a href="home.html" class="text-decoration-none text-muted"><i class="fas fa-home me-2"></i>Home</a></li>
+                                <li><a href="#topics" class="text-decoration-none text-muted"><i class="fas fa-book me-2"></i>Topics</a></li>
+                                <li><a href="#features" class="text-decoration-none text-muted"><i class="fas fa-list-check me-2"></i>Features</a></li>
+                                <li><a href="#testimonials" class="text-decoration-none text-muted"><i class="fas fa-comment me-2"></i>Testimonials</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#" class="text-decoration-none text-muted"><i class="fas fa-question-circle me-2"></i>FAQ</a></li>
+                                <li><a href="#" class="text-decoration-none text-muted"><i class="fas fa-info-circle me-2"></i>About</a></li>
+                                <li><a href="#" class="text-decoration-none text-muted"><i class="fas fa-envelope me-2"></i>Contact</a></li>
+                                <li><a href="#" class="text-decoration-none text-muted"><i class="fas fa-shield-alt me-2"></i>Privacy</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <hr class="my-3">
+            <hr class="my-3 bg-secondary">
             <div class="text-center text-muted">
                 <small>&copy; 2025 Python Learning Platform. Created by Bhawani. All rights reserved.</small>
             </div>
@@ -338,6 +639,34 @@ print(message)
                 console.error('Could not copy text: ', err);
             });
         }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add animation on scroll
+        window.addEventListener('scroll', function() {
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (cardPosition < screenPosition) {
+                    card.style.opacity = 1;
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
     </script>
 </body>
 </html>
